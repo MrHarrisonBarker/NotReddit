@@ -5,18 +5,14 @@ const bodyParser = require("body-parser");
 const postController = require("./controllers/postController");
 
 const app = express();
-const cors = require('cors');
 const port = process.env.PORT || 3301;
 
-let corsOptions = {
-    origin: function(origin, callback){
-        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
-        callback(null, isWhitelisted);
-    },
-    credentials:true
-}
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
-app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
