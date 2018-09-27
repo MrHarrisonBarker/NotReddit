@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from "rxjs";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from "rxjs";
 
-import { Post } from './post';
+import {Post} from './post';
+import {catchError} from "rxjs/operators";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
@@ -14,12 +15,39 @@ const httpOptions = {
 
 export class PostService {
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient) {
+  }
 
   httpUrl = 'https://not-reddit-api.herokuapp.com/posts';
 
-  getPosts(): Observable<Post[]> {
-    return this.client.get<Post[]>( this.httpUrl , httpOptions );
+  getAllPosts(): Observable<Post[]> {
+    return this.client.get<Post[]>(this.httpUrl, httpOptions);
   }
 
+  getPost(id): Observable<Post> {
+    return this.client.get<Post>(`${this.httpUrl}/:${id}`, httpOptions);
+  }
+
+  addPost(post: Post) {
+    this.client.post<Post>(this.httpUrl, post, httpOptions)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        });
+  }
+
+  deletePost(id: string) {
+    const url = `${this.httpUrl}/:${id}`;
+    this.client.delete(url, httpOptions)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log( 'Error occured' + err );
+        });
+  }
 }

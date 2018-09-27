@@ -17,7 +17,7 @@ exports.createPost = (req, res) => {
         }
         res.status(200).json(post);
     })
-}
+};
 
 exports.readPost = (req, res) => {
   Post.findById(req.params.postid, (err, post) => {
@@ -26,7 +26,7 @@ exports.readPost = (req, res) => {
     }
     res.status(200).json(post);
   })
-}
+};
 
 exports.updatePost = (req, res) => {
   Post.findOneAndUpdate(
@@ -40,7 +40,7 @@ exports.updatePost = (req, res) => {
       res.status(200).json(post);
     }
   )
-}
+};
 
 exports.deletePost = (req, res) => {
   Post.remove({ _id: req.params.postid },(err, post) => {
@@ -50,4 +50,4 @@ exports.deletePost = (req, res) => {
   //res.status(200).json({ message: "Post {post} deleted" });
   res.status(200).json({ message: "Post deleted" });
   })
-}
+};

@@ -25,7 +25,7 @@ app
   .route("/posts/:postid")
   .get(postController.readPost)
   .put(postController.updatePost)
-  .delete(postController.deletePost)
+  .delete(postController.deletePost);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
