@@ -10,12 +10,40 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
+    Author: {
+        type: String,
+        required: true
+    },
+    Rank: {
+        type: Number,
+        required: true
+    },
+    Visible: {
+        type: Boolean
+    },
+    Domain: {
+        type: String
+    },
+    Summary: {
+        type: String
+    },
+    Tags: {
+        type: [String]
+    },
+    Comments: {
+      type: [{
+          Body: String,
+          createdOn: {
+              type: Date,
+              default: Date.now
+          },
+          Author: String
+      }]
+    },
     createdOn: {
      type: Date,
      default: Date.now
     }
-
-    // TODO : Create more realistic modelto represent a post 
 
 });
 
