@@ -10,8 +10,6 @@ const port = process.env.PORT || 3301;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// TODO : Implement comments model and controller
-
 app
   .route("/posts")
   .get(postController.listAllPosts)
