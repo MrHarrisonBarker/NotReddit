@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from "rxjs";
 
+import { Post } from './post';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,8 +18,8 @@ export class PostService {
 
   httpUrl = 'https://not-reddit-api.herokuapp.com/posts';
 
-  getPosts(): Observable<Object[]> {
-    return this.client.get<Object[]>( this.httpUrl , httpOptions );
+  getPosts(): Observable<Post[]> {
+    return this.client.get<Post[]>( this.httpUrl , httpOptions );
   }
 
 }

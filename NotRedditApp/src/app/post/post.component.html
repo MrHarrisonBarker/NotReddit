@@ -1,3 +1,12 @@
 <div *ngFor="let post of posts">
-  {{ post | json }}
+  <p>id : {{ post._id }}</p>
+  <p>Author : {{ post.Author }}</p>
+  <p>Domain : {{ post.Domain }}</p>
+  <p>Title : {{ post.postTitle }}</p>
+  <p>Body : {{ post.postBody }}</p>
+  <p>Rank : {{ post.Rank }}</p>
+  <p>Summary : {{ post.Summary }}</p>
+  <p>Visible? : {{ post.Visible }}</p>
+  <p>Comments : {{ post.Comments | json }}</p>
+  <hr>
 </div>
