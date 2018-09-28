@@ -3,9 +3,15 @@
 <div class="container-fluid">
   <div *ngFor="let post of posts" class="row">
     <div class="col-1">
-      <img src="../../assets/upVote.svg" class="img-fluid voteBtn mx-auto d-block" alt="Responsive image" (click)="updateRank(post)">
+      <img src="../../assets/upVote.svg"
+           class="img-fluid voteBtn mx-auto d-block"
+           alt="Responsive image"
+           (click)="updateRank(post,true)">
       <h1 class="text-center">{{ post.Rank }}</h1>
-      <img src="../../assets/downVote.svg" class="img-fluid voteBtn mx-auto d-block" alt="Responsive image">
+      <img src="../../assets/downVote.svg"
+           class="img-fluid voteBtn mx-auto d-block"
+           alt="Responsive image"
+           (click)="updateRank(post,false)">
     </div>
     <div class="col-11 post">
       <h3>{{ post.postTitle }}</h3>

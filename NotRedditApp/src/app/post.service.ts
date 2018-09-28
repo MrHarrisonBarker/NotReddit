@@ -52,7 +52,7 @@ export class PostService {
 
   updatePost(post: Post) {
     const url = `${this.httpUrl}/:${post._id}`;
-    this.client.put<Post>(url, post, httpOptions)
+    this.client.put(url, post, httpOptions)
       .subscribe(
         res => {
           console.log(res);

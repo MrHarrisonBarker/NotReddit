@@ -25,6 +25,8 @@ export class HomeComponent implements OnInit {
   updateRank(post: Post, up: boolean) {
     if (up) {
       post.Rank ++;
+    } else {
+      post.Rank --;
     }
     this.postService.updatePost(post);
   }
