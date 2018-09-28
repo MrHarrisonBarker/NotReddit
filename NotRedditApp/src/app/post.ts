@@ -5,7 +5,7 @@ export class Post {
   postTitle: String;
   postBody: String;
   Author: String;
-  Rank: Number;
+  Rank: number;
   Visible: Boolean;
   Domain: String;
   Summary: String;

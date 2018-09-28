@@ -1,3 +1,33 @@
-<p>
-  home works!
-</p>
+<h1 class="h1 font-weight-normal">Home</h1>
+
+<div class="container-fluid">
+  <div *ngFor="let post of posts" class="row">
+    <div class="col-1">
+      <img src="../../assets/upVote.svg" class="img-fluid voteBtn mx-auto d-block" alt="Responsive image" (click)="updateRank(post)">
+      <h1 class="text-center">{{ post.Rank }}</h1>
+      <img src="../../assets/downVote.svg" class="img-fluid voteBtn mx-auto d-block" alt="Responsive image">
+    </div>
+    <div class="col-11 post">
+      <h3>{{ post.postTitle }}</h3>
+      <p><em>Uploaded to: {{ post.Domain }}</em></p>
+      <p>{{ post.Summary }}</p>
+      <p>{{ post.Author }}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1" style="background-color: red; height: 100px "></div>
+    <div class="col-1" style="background-color: blue; height: 100px "></div>
+    <div class="col-1" style="background-color: green; height: 100px "></div>
+    <div class="col-1" style="background-color: red; height: 100px "></div>
+    <div class="col-1" style="background-color: blue; height: 100px "></div>
+    <div class="col-1" style="background-color: green; height: 100px "></div>
+    <div class="col-1" style="background-color: red; height: 100px "></div>
+    <div class="col-1" style="background-color: blue; height: 100px "></div>
+    <div class="col-1" style="background-color: green; height: 100px "></div>
+    <div class="col-1" style="background-color: red; height: 100px "></div>
+    <div class="col-1" style="background-color: blue; height: 100px "></div>
+    <div class="col-1" style="background-color: green; height: 100px "></div>
+  </div>
+</div>
+

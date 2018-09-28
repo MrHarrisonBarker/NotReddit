@@ -1,6 +1,7 @@
-<p>
-  login works!
-</p>
-
-<button (click)="signInWithGoogle()">Click to login with google</button>
-<button (click)="signInWithGitHub()">Click to login with github</button>
+<div class="text-center">
+  <form class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
+    <button class="btn btn-block btn-danger" (click)="signInWithGoogle()">Click to login with google</button>
+    <button class="btn btn-block btn-dark" (click)="signInWithGitHub()">Click to login with github</button>
+  </form>
+</div>

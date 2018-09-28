@@ -15,6 +15,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
 import { HomeComponent } from './home/home.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 Sentry.init({
   dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -32,7 +33,7 @@ class SentryErrorHandler implements ErrorHandler {
 }
 
 @NgModule({
-  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent],
+  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent],
   imports: [BrowserModule,
     AppRoutingModule,
     HttpClientModule,

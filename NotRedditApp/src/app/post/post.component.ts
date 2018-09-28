@@ -1,7 +1,7 @@
 import { Component, OnInit , Input } from '@angular/core';
-import { PostService } from "../post.service";
+import { PostService } from '../post.service';
 
-import { Post } from "../post";
+import { Post } from '../post';
 
 @Component({
   selector: 'app-post',
@@ -12,17 +12,17 @@ export class PostComponent implements OnInit {
 
   constructor(private postService: PostService) { }
 
-  posts: Post[];
-  @Input() post: Post;
+  @Input() id: String;
+  selectedPost: Post;
 
   ngOnInit() {
-    this.getPosts();
+
   }
 
-  getPosts(): void {
-    this.postService.getAllPosts()
-      .subscribe( data => this.posts = data,
-        error => console.log('Error: ' + error))
+  getPost(id) {
+    this.postService.getPost(id)
+      .subscribe( data => this.selectedPost = data ,
+        error => console.log(error));
   }
 
 }

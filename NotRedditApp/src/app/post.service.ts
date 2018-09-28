@@ -38,8 +38,8 @@ export class PostService {
         });
   }
 
-  deletePost(id: string) {
-    const url = `${this.httpUrl}/:${id}`;
+  deletePost(post: Post) {
+    const url = `${this.httpUrl}/:${post._id}`;
     this.client.delete(url, httpOptions)
       .subscribe(
         res => {
@@ -47,6 +47,18 @@ export class PostService {
         },
         err => {
           console.log( 'Error occured' + err );
+        });
+  }
+
+  updatePost(post: Post) {
+    const url = `${this.httpUrl}/:${post._id}`;
+    this.client.put<Post>(url, post, httpOptions)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log( 'Error occured' + err.toString() );
         });
   }
 }
