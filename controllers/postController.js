@@ -1,4 +1,4 @@
-const Post = require("../models/Post.js");
+const Post = require("../models/Post.js").PostSchema;
 
 exports.listAllPosts = (req, res) => {
     Post.find({}, (err, post) => {
