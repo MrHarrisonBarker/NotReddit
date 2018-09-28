@@ -13,7 +13,9 @@ export class LoginComponent implements OnInit {
 
   private  user: Observable<firebase.User>;
 
-  constructor(public fireAuth: AngularFireAuth , public authService: AuthService, private router: Router) {
+  constructor(public fireAuth: AngularFireAuth,
+              public authService: AuthService,
+              private router: Router) {
     this.user = fireAuth.authState;
   }
 
@@ -23,6 +25,14 @@ export class LoginComponent implements OnInit {
 
   signInWithGoogle() {
     this.authService.signInWIthGoogle().then((data) => {
+      this.router.navigate(['/home']);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  signInWithGitHub() {
+    this.authService.signInWithGitHub().then( (data) => {
       this.router.navigate(['/home']);
     }).catch((err) => {
       console.log(err);

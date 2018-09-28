@@ -9,14 +9,11 @@ import {PostComponent} from './post/post.component';
 import {AppComponent} from './app.component';
 import {AngularFireModule} from '@angular/fire';
 import {LoginComponent} from './login/login.component';
-import {SignupComponent} from './signup/signup.component';
 import {UsersComponent} from './users/users.component';
 import {environment} from '../environments/environment';
-import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestoreModule} from "@angular/fire/firestore";
 import {AuthService} from "./auth.service";
-import { MessagesComponent } from './messages/messages.component';
-import {MessageService} from "./message.service";
 import { HomeComponent } from './home/home.component';
 
 Sentry.init({
@@ -35,12 +32,13 @@ class SentryErrorHandler implements ErrorHandler {
 }
 
 @NgModule({
-  declarations: [AppComponent, PostComponent, LoginComponent, SignupComponent, UsersComponent, MessagesComponent, HomeComponent],
+  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent],
   imports: [BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
-    AngularFireAuthModule],
+    AngularFireAuthModule,
+  AngularFirestoreModule],
   providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService ],
   bootstrap: [ AppComponent ]
 })
