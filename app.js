@@ -1,8 +1,8 @@
-require("./config/datasource");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const postController = require("./controllers/postController");
+
+require("./config/datasource");
 
 const app = express();
 const port = process.env.PORT || 3301;
