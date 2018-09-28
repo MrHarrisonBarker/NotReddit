@@ -58,7 +58,7 @@ export class PostService {
           console.log(res);
         },
         err => {
-          console.log( 'Error occured' + err.toString() );
+          console.log( 'Error occured' + err );
         });
   }
 }
