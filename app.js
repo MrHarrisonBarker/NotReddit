@@ -31,14 +31,14 @@ app
 
 app
     .route("/domains")
-    .get(domainController.listAllDomains())
-    .post(domainController.createDomain());
+    .get(domainController.listAllDomains)
+    .post(domainController.createDomain);
 
 app
     .route("/domains/:domainid")
-    .get(domainController.readDomain())
-    .put(domainController.updateDomain())
-    .delete(domainController.deleteDomain());
+    .get(domainController.readDomain)
+    .put(domainController.updateDomain)
+    .delete(domainController.deleteDomain);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
