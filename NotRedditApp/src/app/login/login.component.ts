@@ -1,4 +1,4 @@
-import {Component, OnInit, HostBinding, NgZone} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Observable} from 'rxjs';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log('loginComponent');
   }
 
   signInWithGoogle() {
