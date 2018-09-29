@@ -1,23 +1,30 @@
-<h1 class="h1 font-weight-normal">Home</h1>
 
 <div class="container-fluid">
-  <div *ngFor="let post of posts" class="row">
-    <div class="col-1">
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/logo.svg" width="30" height="30" alt="">
+      <a class="navbar-brand" href="#">
+        Home
+      </a>
+    </a>
+  </nav>
+
+  <div *ngFor="let post of posts" class="row whole-post">
+    <div class="col-1 rank align-self-center">
       <img src="../../assets/upVote.svg"
-           class="img-fluid voteBtn mx-auto d-block"
-           alt="Responsive image"
+           class="img voteBtn mx-auto d-block span3"
            (click)="updateRank(post,true)">
-      <h1 class="text-center">{{ post.Rank }}</h1>
+      <h3 class="text-center span3">{{ post.Rank }}</h3>
       <img src="../../assets/downVote.svg"
-           class="img-fluid voteBtn mx-auto d-block"
-           alt="Responsive image"
+           class="img voteBtn mx-auto d-block span3"
            (click)="updateRank(post,false)">
     </div>
     <div class="col-11 post">
-      <h3>{{ post.postTitle }}</h3>
-      <p><em>Uploaded to: {{ post.Domain }}</em></p>
-      <p>{{ post.Summary }}</p>
-      <p>{{ post.Author }}</p>
+      <p class="h4 postTitle"><a routerLink="/post/{{post._id}}">{{ post.postTitle }}</a></p>
+      <p><em>Uploaded to: {{ post.Domain }}</em><br>
+      {{ post.Summary }}<br>
+      {{ post.Author }}</p>
     </div>
   </div>
 

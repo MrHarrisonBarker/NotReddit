@@ -24,7 +24,7 @@ export class PostService {
   }
 
   getPost(id): Observable<Post> {
-    return this.client.get<Post>(`${this.httpUrl}/:${id}`, httpOptions);
+    return this.client.get<Post>(`${this.httpUrl}/${id}`, httpOptions);
   }
 
   addPost(post: Post) {
@@ -39,7 +39,7 @@ export class PostService {
   }
 
   deletePost(post: Post) {
-    const url = `${this.httpUrl}/:${post._id}`;
+    const url = `${this.httpUrl}/${post._id}`;
     this.client.delete(url, httpOptions)
       .subscribe(
         res => {

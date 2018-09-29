@@ -1,15 +1,52 @@
-<form [formGroup]="addForm">
-  <label>
-    Title :
-    <input type="text" formControlName="postTitle">
-  </label>
 
-  <label>
-    Body :
-    <input type="text" formControlName="postBody">
-  </label>
-</form>
+<div class="container">
+  <div class="row">
+    <form [formGroup]="addForm" (ngSubmit)="submitForm()" class="form-group">
+      <fieldset class="form-group">
+        <input
+          formControlName="postTitle"
+          placeholder="Title"
+          class="form-control"
+          type="text"
+          required
+          #spy/>
+      </fieldset>
 
-<h1>
-  Hellow?
-</h1>
+      <p>{{ spy.className }}</p>
+
+      <fieldset class="form-group">
+        <input
+          formControlName="postBody"
+          placeholder="Body"
+          class="form-control"
+          required
+          type="text"/>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <input
+          formControlName="Visible"
+          placeholder="Visible?"
+          class="form-control"
+          type="checkbox"/>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <input
+          formControlName="Domain"
+          placeholder="Domain"
+          class="form-control"
+          required
+          type="text"/>
+      </fieldset>
+
+      <button class="btn">
+        Submit
+      </button>
+
+    </form>
+
+    {{ addForm.status }}
+
+  </div>
+</div>

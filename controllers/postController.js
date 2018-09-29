@@ -29,18 +29,13 @@ exports.readPost = (req, res) => {
 };
 
 exports.updatePost = (req, res) => {
-  Post.findOneAndUpdate(
-    { _id: req.params.postid },
-    req.body,
-    {new: post},
-    (err, post) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-      res.status(200).json(post);
-    }
-  )
-};
+    Post.findOneAndUpdate(
+        {_id: req.params.postid},
+        req.body,
+        function (err, place) {
+            res.send(place);
+        });
+}
 
 exports.deletePost = (req, res) => {
   Post.remove({ _id: req.params.postid },(err, post) => {

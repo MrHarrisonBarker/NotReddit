@@ -1,9 +1,22 @@
-
+body{
+  line-height: 0.5;
+}
 .post {
   background-color: lightgreen;
+  border: solid black;
+  overflow-wrap:break-word;
+}
+.rank {
+  border: solid red;
 }
 .voteBtn {
-  width: 40px;
-  height: 40px;
+  width: 25px ;
+  height: 25px  ;
+}
+.whole-post {
+
+}
+.postTitle {
+  margin-top: 2px;
 }
 

@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('loginComponent');
   }
 
   signInWithGoogle() {
     this.authService.signInWIthGoogle().then((data) => {
+      console.log(data);
       this.router.navigate(['/home']);
     }).catch((err) => {
       console.log(err);

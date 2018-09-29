@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from "../post";
-import {PostService} from "../post.service";
+import {Post} from '../post';
+import {PostService} from '../post.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -9,21 +10,42 @@ import {PostService} from "../post.service";
 })
 export class AddPostComponent implements OnInit {
 
-  addForm = new FormGroup({
-    postTitle: new FormControl(''),
-    postBody: new FormControl(''),
-    Author: new FormControl(''),
-    Visible: new FormControl(''),
-    Domain: new FormControl(''),
-  });
+  addForm: FormGroup;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,
+              private formBuilder: FormBuilder) {
+    this.addForm = formBuilder.group({
+      'postTitle':  ['', Validators.required ],
+      'postBody': ['', Validators.required ],
+      'Visible': [''],
+      'Domain': ['', Validators.required ]
+    });
+  }
 
   ngOnInit() {
   }
 
   addPost(post: Post) {
-    this.postService.addPost(post)
+    this.postService.addPost(post);
+    console.log('Post: ' + post);
+  }
+
+  submitForm() {
+    const post = new Post();
+    const submittedPost = this.addForm.value;
+
+    post.postTitle = submittedPost.postTitle;
+    post.postBody = submittedPost.postBody;
+    post.Author = 'Harrison';
+    post.Rank = 0;
+    post.Visible = submittedPost.Visible;
+    post.Domain = submittedPost.Domain;
+    post.Summary = submittedPost.postBody.substr(0, 99);
+
+    console.log(submittedPost);
+    console.log(post);
+
+    this.addPost(post);
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
-import {Observable} from 'rxjs';
 import {Post} from '../post';
 
 @Component({
@@ -12,7 +11,8 @@ export class HomeComponent implements OnInit {
 
   posts: Post[];
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {
+  }
 
   ngOnInit() {
     this.getAllPosts();
@@ -29,5 +29,6 @@ export class HomeComponent implements OnInit {
       post.Rank --;
     }
     this.postService.updatePost(post);
+    console.log(post);
   }
 }
