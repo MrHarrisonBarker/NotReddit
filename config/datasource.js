@@ -20,3 +20,4 @@ mongoose.connect(dbURI, options).then(
 // Models go here
 
 require("../models/Post.js");
+require("../models/Domain");

@@ -1,34 +1,25 @@
 
 <div class="container-fluid">
 
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="../../assets/logo.svg" width="30" height="30" alt="">
-      <a class="navbar-brand" href="#">
-        Home
-      </a>
-    </a>
-  </nav>
-
-  <div *ngFor="let post of posts" class="row whole-post">
-    <div class="col-1 rank align-self-center">
-      <img src="../../assets/upVote.svg"
+  <div *ngFor="let post of posts" class="row">
+    <div class="col-1 align-self-center">
+      <img src="../../assets/chevron-top.svg"
            class="img voteBtn mx-auto d-block span3"
            (click)="updateRank(post,true)">
-      <h3 class="text-center span3">{{ post.Rank }}</h3>
-      <img src="../../assets/downVote.svg"
+      <h4 class="text-center span3">{{ post.Rank }}</h4>
+      <img src="../../assets/chevron-bottom.svg"
            class="img voteBtn mx-auto d-block span3"
            (click)="updateRank(post,false)">
     </div>
-    <div class="col-11 post">
-      <p class="h4 postTitle"><a routerLink="/post/{{post._id}}">{{ post.postTitle }}</a></p>
-      <p><em>Uploaded to: {{ post.Domain }}</em><br>
+    <div class="col-11" style="overflow-wrap:break-word;">
+      <p><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a><br>
+      <em>Uploaded to -> {{ post.Domain }}</em><br>
       {{ post.Summary }}<br>
-      {{ post.Author }}</p>
+      By -> {{ post.Author }} Posted -> {{ post.createdOn | date }}</p>
     </div>
   </div>
 
-  <div class="row">
+  <!--<div class="row">
     <div class="col-1" style="background-color: red; height: 100px "></div>
     <div class="col-1" style="background-color: blue; height: 100px "></div>
     <div class="col-1" style="background-color: green; height: 100px "></div>
@@ -41,6 +32,6 @@
     <div class="col-1" style="background-color: red; height: 100px "></div>
     <div class="col-1" style="background-color: blue; height: 100px "></div>
     <div class="col-1" style="background-color: green; height: 100px "></div>
-  </div>
+  </div>-->
 </div>
 

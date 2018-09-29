@@ -44,6 +44,9 @@ const PostSchema = new Schema({
     createdOn: {
      type: Date,
      default: Date.now
+    },
+    url: {
+        type: String
     }
 
 });

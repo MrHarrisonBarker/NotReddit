@@ -10,4 +10,6 @@ export class Post {
   Domain: String;
   Summary: String;
   Comments: Comment[];
+  createdOn: Date;
+  url: String;
 }

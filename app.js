@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const postController = require("./controllers/postController");
+const domainController = require("./controllers/domainController")
 
 require("./config/datasource");
 
@@ -27,6 +28,17 @@ app
   .get(postController.readPost)
   .put(postController.updatePost)
   .delete(postController.deletePost);
+
+app
+    .route("/domains")
+    .get(domainController.listAllDomains())
+    .post(domainController.createDomain());
+
+app
+    .route("/domains/:domainid")
+    .get(domainController.readDomain())
+    .put(domainController.updateDomain())
+    .delete(domainController.deleteDomain());
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
