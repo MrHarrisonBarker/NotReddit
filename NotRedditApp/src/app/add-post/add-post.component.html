@@ -30,6 +30,15 @@
           <label class="form-check-label">Visible? </label>
         </div>
 
+        <!--<div class="form-group">
+          <label>Domain</label>
+          <select class="form-control" id="domain" formControlName="Domain">
+            <option *ngFor="let domain of domains" >
+              {{domain.Name}}
+            </option>
+          </select>
+        </div>-->
+
         <div class="form-group">
           <input
             formControlName="Domain"
@@ -52,10 +61,6 @@
         </button>
 
       </form>
-
-    {{ addForm.status }}
-
     </div>
   </div>
 </div>
-

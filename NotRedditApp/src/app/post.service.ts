@@ -17,6 +17,7 @@ export class PostService {
   }
 
   httpUrl = 'https://not-reddit-api.herokuapp.com/posts';
+  domainHttpUrl = 'https://not-reddit-api.herokuapp.com/d';
 
   getAllPosts(): Observable<Post[]> {
     return this.client.get<Post[]>(this.httpUrl, httpOptions);
@@ -24,6 +25,10 @@ export class PostService {
 
   getPost(id): Observable<Post> {
     return this.client.get<Post>(`${this.httpUrl}/${id}`, httpOptions);
+  }
+
+  getPostByDomain(name): Observable<Post[]> {
+    return this.client.get<Post[]>(`${this.domainHttpUrl}/${name}`, httpOptions);
   }
 
   addPost(post: Post) {

@@ -17,7 +17,9 @@ export class DomainService {
   httpUrl = 'https://not-reddit-api.herokuapp.com/domains';
 
   getAllDomains(): Observable<Domain[]> {
-    return this.client.get<Domain[]>(this.httpUrl, httpOptions);
+    const domains = this.client.get<Domain[]>(this.httpUrl, httpOptions);
+    console.log(domains);
+    return domains;
   }
 
   getDomain(id): Observable<Domain> {

@@ -20,7 +20,6 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params);
       console.log(params['_id']);
       this.getPost(params['_id']);
     });

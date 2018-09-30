@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from '../post';
 import {PostService} from '../post.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DomainService} from '../domain.service';
+import {Domain} from '../domain';
 
 @Component({
   selector: 'app-add-post',
@@ -11,23 +13,31 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class AddPostComponent implements OnInit {
 
   addForm: FormGroup;
+  domains: Domain[];
 
   constructor(private postService: PostService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private domainService: DomainService) {
     this.addForm = formBuilder.group({
       'postTitle':  ['', Validators.required ],
       'postBody': ['', Validators.required ],
       'Visible': [''],
-      'Domain': ['', Validators.required ]
+      'Domain': ['']
     });
   }
 
   ngOnInit() {
+    // this.getAllDomains();
   }
 
   addPost(post: Post) {
     this.postService.addPost(post);
     console.log('Post: ' + post);
+  }
+
+  getAllDomains() {
+    this.domainService.getAllDomains().subscribe(data => this.domains = data);
+    console.log(this.domains);
   }
 
   submitForm() {
