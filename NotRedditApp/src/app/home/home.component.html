@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
 
-  <div *ngFor="let post of posts; let i = index" class="row">
+  <!--<div *ngFor="let post of posts; let i = index" class="row">
     <div class="col-1 align-self-center">
       <img src="../../assets/chevron-top.svg"
            class="img voteBtn mx-auto d-block span3"
@@ -15,9 +15,15 @@
       <p><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a><br>
       <em>Uploaded to -> {{ post.Domain }}</em><br>
       {{ post.Summary }}<br>
-      By -> {{ post.Author }} Posted -> {{ post.createdOn | date }}</p>
+      By -> {{ post.Author }} <br>
+        Posted -> {{ post.createdOn | date }}</p>
     </div>
-  </div>
+  </div>-->
+
+  <app-post *ngFor="let post of posts" [post]="post">
+  </app-post>
+
+
 
   <!--<div class="row">
     <div class="col-1" style="background-color: red; height: 100px "></div>

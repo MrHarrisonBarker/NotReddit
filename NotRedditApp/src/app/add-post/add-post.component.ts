@@ -20,9 +20,10 @@ export class AddPostComponent implements OnInit {
               private domainService: DomainService) {
     this.addForm = formBuilder.group({
       'postTitle':  ['', Validators.required ],
-      'postBody': ['', Validators.required ],
-      'Visible': [''],
-      'Domain': ['']
+      'postBody': [''],
+      'Visible': ['', Validators.required ],
+      'Domain': ['', Validators.required ],
+      'url': ['']
     });
   }
 
@@ -51,6 +52,7 @@ export class AddPostComponent implements OnInit {
     post.Visible = submittedPost.Visible;
     post.Domain = submittedPost.Domain;
     post.Summary = submittedPost.postBody.substr(0, 99);
+    post.url = submittedPost.url;
 
     console.log(submittedPost);
     console.log(post);

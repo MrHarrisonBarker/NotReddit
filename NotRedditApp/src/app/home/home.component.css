@@ -1,15 +1,4 @@
 body{
   line-height: 0.5;
 }
-.post {
-  background-color: lightgreen;
-  border: solid black;
-  overflow-wrap:break-word;
-}
-.rank {
-  border: solid red;
-}
-.voteBtn {
-  width: 20px ;
-  height: 20px  ;
-}
+

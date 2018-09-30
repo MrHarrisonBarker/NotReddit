@@ -1,22 +1,6 @@
 <div class="container-fluid">
 
-  <div *ngFor="let post of posts; let i = index" class="row">
-    <div class="col-1 align-self-center">
-      <img src="../../assets/chevron-top.svg"
-           class="img voteBtn mx-auto d-block span3"
-           (click)="updateRank(post,true)">
-      <h4 class="text-center span3">{{ post.Rank }}</h4>
-      <img src="../../assets/chevron-bottom.svg"
-           class="img voteBtn mx-auto d-block span3"
-           (click)="updateRank(post,false)">
-    </div>
-    <div class="col-11" style="overflow-wrap:break-word;">
-      <p><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a><br>
-        <em>Uploaded to -> {{ post.Domain }}</em><br>
-        {{ post.Summary }}<br>
-        By -> {{ post.Author }} Posted -> {{ post.createdOn | date }}</p>
-    </div>
-  </div>
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 
   <!--<div class="row">
     <div class="col-1" style="background-color: red; height: 100px "></div>

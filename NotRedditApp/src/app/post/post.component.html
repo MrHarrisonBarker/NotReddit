@@ -1,17 +1,32 @@
-<div class="container">
-  <div *ngIf="selectedPost">
-    <p>id : {{ selectedPost._id }}<br>
-      Author : {{ selectedPost.Author }}<br>
-      Domain : {{ selectedPost.Domain }}<br>
-      Title : {{ selectedPost.postTitle }}<br>
-      Body : {{ selectedPost.postBody }}<br>
-      Rank : {{ selectedPost.Rank }}<br>
-      Summary : {{ selectedPost.Summary }}<br>
-      Visible? : {{ selectedPost.Visible }}<br>
-      Comments : {{ selectedPost.Comments | json }}<br>
-      <button (click)="goBack()">Back</button>
-      <button (click)="removePost(selectedPost)">Remove</button>
-      <!--<a routerLink="/update/{{selectedPost._id}}">Update</a>-->
-    <hr>
+<div class="row">
+  <div class="col-1 align-self-center">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="8"
+         height="8"
+         viewBox="0 0 8 8"
+         class="img voteBtn voteBtn-Up mx-auto d-block span3">
+      <path d="M4 0l-4 4 1.5 1.5 2.5-2.5 2.5 2.5 1.5-1.5-4-4z" transform="translate(0 1)" />
+    </svg>
+    <!--<img src="../../assets/chevron-top.svg"
+         class="img voteBtn mx-auto d-block span3"
+         (click)="updateRank(post,true)">-->
+    <h4 class="text-center span3">{{ post.Rank }}</h4>
+    <!--<img src="../../assets/chevron-bottom.svg"
+         class="img voteBtn mx-auto d-block span3"
+         (click)="updateRank(post,false)">-->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="8"
+         height="8"
+         viewBox="0 0 8 8"
+         class="img voteBtn voteBtn-Down mx-auto d-block span3">
+      <path d="M1.5 0l-1.5 1.5 4 4 4-4-1.5-1.5-2.5 2.5-2.5-2.5z" transform="translate(0 1)" />
+    </svg>
+  </div>
+  <div class="col-11" style="overflow-wrap:break-word;">
+    <p><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a><br>
+      <em>Uploaded to -> <a routerLink="/d/{{post.Domain}}">{{ post.Domain }}</a></em><br>
+      {{ post.Summary }}<br>
+      By -> {{ post.Author }} <br>
+      Posted -> {{ post.createdOn | date }}</p>
   </div>
 </div>

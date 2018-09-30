@@ -7,9 +7,10 @@ import {AddPostComponent} from './add-post/add-post.component';
 import {UpdatePostComponent} from './update-post/update-post.component';
 import {DomainsComponent} from './domains/domains.component';
 import {DomainComponent} from './domain/domain.component';
+import {PostDetailComponent} from './post-detail/post-detail.component';
 
 const routes: Routes = [
-  {path: 'post/:_id', component: PostComponent},
+  {path: 'post/:_id', component: PostDetailComponent},
   {path: 'update/:_id', component: UpdatePostComponent},
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
