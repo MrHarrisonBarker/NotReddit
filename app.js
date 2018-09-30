@@ -30,7 +30,8 @@ app
   .delete(postController.deletePost);
 
 app
-    .route("/posts/:domainname");
+    .route("/posts/:domainname")
+    .get(postController.listAllPostsByDomain());
 
 app
     .route("/domains")
