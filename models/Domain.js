@@ -31,7 +31,8 @@ const DomainSchema = new Schema({
         type: [String]
     },
     Subscribers: {
-        type: Number
+        type: Number,
+        required: true
     }
 });
 

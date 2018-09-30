@@ -9,6 +9,15 @@ exports.listAllPosts = (req, res) => {
     });
   };
 
+exports.listAllPostsByDomain = (req, res) => {
+    Post.find({ Domain: req.params.domainname }, (err, post) => {
+        if (err) {
+            res.status(500).send(err);
+        }
+        res.status(200).json(post);
+    });
+};
+
 exports.createPost = (req, res) => {
     let newPost = new Post(req.body);
     newPost.save((err, post) => {

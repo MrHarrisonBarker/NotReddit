@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
 import {AddPostComponent} from './add-post/add-post.component';
 import {UpdatePostComponent} from './update-post/update-post.component';
+import {DomainsComponent} from './domains/domains.component';
 
 const routes: Routes = [
   {path: 'post/:_id', component: PostComponent},
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'add', component: AddPostComponent}];
+  {path: 'add', component: AddPostComponent},
+  {path: 'domains', component: DomainsComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

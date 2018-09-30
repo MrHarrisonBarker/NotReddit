@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UpdatePostComponent } from './update-post/update-post.component';
+import { DomainsComponent } from './domains/domains.component';
+import { DomainComponent } from './domain/domain.component';
 
 Sentry.init({
   dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -33,7 +35,7 @@ class SentryErrorHandler implements ErrorHandler {
 
 
 @NgModule({
-  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent],
+  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainsComponent, DomainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
