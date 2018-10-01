@@ -20,12 +20,12 @@ exports.createDomain = (req, res) => {
 };
 
 exports.readDomain = (req, res) => {
-    Domain.findById(req.params.Domain, (err, domain) => {
+    Domain.find({Name: req.params.domainname}, (err, domain) => {
         if (err) {
             res.status(500).send(err);
         }
         res.status(200).json(domain);
-    })
+    });
 };
 
 exports.updateDomain = (req, res) => {

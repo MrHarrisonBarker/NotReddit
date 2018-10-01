@@ -22,7 +22,7 @@ export class DomainService {
     return domains;
   }
 
-  getDomain(id): Observable<Domain> {
-    return this.client.get<Domain>(`${this.httpUrl}/${id}`, httpOptions);
+  getDomain(name): Observable<Domain> {
+    return this.client.get<Domain>(`${this.httpUrl}/${name}`, httpOptions);
   }
 }

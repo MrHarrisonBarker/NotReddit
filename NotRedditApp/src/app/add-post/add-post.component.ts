@@ -15,6 +15,8 @@ export class AddPostComponent implements OnInit {
   addForm: FormGroup;
   domains: Domain[];
 
+  contentTypes = ['image','link','text'];
+
   constructor(private postService: PostService,
               private formBuilder: FormBuilder,
               private domainService: DomainService) {
@@ -23,7 +25,8 @@ export class AddPostComponent implements OnInit {
       'postBody': [''],
       'Visible': ['', Validators.required ],
       'Domain': ['', Validators.required ],
-      'url': ['']
+      'url': [''],
+      'Content': ['']
     });
   }
 
@@ -53,6 +56,7 @@ export class AddPostComponent implements OnInit {
     post.Domain = submittedPost.Domain;
     post.Summary = submittedPost.postBody.substr(0, 99);
     post.url = submittedPost.url;
+    post.Content = submittedPost.Content;
 
     console.log(submittedPost);
     console.log(post);

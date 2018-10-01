@@ -39,7 +39,7 @@ app
     .post(domainController.createDomain);
 
 app
-    .route("/domains/:domainid")
+    .route("/domains/:domainname")
     .get(domainController.readDomain)
     .put(domainController.updateDomain)
     .delete(domainController.deleteDomain);
