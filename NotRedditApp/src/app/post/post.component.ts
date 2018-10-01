@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, NgZone} from '@angular/core';
 import { Post } from '../post';
-import {PostService} from "../post.service";
-import {DomainService} from "../domain.service";
-import {Domain} from "../domain";
+import {PostService} from '../post.service';
+import {DomainService} from '../domain.service';
 
 
 @Component({
@@ -13,31 +12,39 @@ import {Domain} from "../domain";
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
-  public selectedDomain: Domain;
 
   constructor(private postService: PostService,
-              private domainService: DomainService) { }
+              private domainService: DomainService) {
+  }
 
 
   ngOnInit() {
     console.log(this.post);
-    this.getDomain(this.post.Domain);
+    // this.getDomain(this.post.Domain);
+    // console.log(this.selectedDomain);
+    // this.domainService.getDomain(this.post.Domain).subscribe(data => this.selectedDomain = data);
+    // console.log(this.domain);
   }
 
   updateRank(post: Post, up: boolean) {
     if (up) {
-      post.Rank += 1000;
+      post.Rank += 1;
     } else {
-      post.Rank -= 1000;
+      post.Rank -= 1;
     }
     this.postService.updatePost(post);
     console.log(post);
   }
 
-  getDomain(name) {
+  /*getDomain(name) {
     this.domainService.getDomain(name).subscribe((data) => {
-      console.log(data);
       this.selectedDomain = data;
-    });
-  }
+    },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        console.log(this.selectedDomain);
+      });
+  }*/
 }

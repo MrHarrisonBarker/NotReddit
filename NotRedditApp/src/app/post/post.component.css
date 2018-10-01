@@ -16,3 +16,6 @@
 .voteBtn-Down:Hover {
   fill: #FF0000;
 }
+.post-row {
+  margin-bottom: 10px;
+}
