@@ -46,6 +46,9 @@ const PostSchema = new Schema({
     },
     url: {
         type: String
+    },
+    Content: {
+        type: String
     }
 
 });

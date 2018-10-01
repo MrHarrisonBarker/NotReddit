@@ -12,4 +12,5 @@ export class Post {
   Comments: Comment[];
   createdOn: Date;
   url: String;
+  Content: String;
 }
