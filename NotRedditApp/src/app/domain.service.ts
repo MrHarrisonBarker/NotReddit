@@ -23,6 +23,7 @@ export class DomainService {
   }
 
   getDomain(name): Observable<Domain> {
-    return this.client.get<Domain>(`${this.httpUrl}/${name}`, httpOptions);
+    const domain = this.client.get<Domain>(`${this.httpUrl}/${name}`, httpOptions);
+    return domain;
   }
 }

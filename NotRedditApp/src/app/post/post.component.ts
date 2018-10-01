@@ -13,27 +13,31 @@ import {Domain} from "../domain";
 export class PostComponent implements OnInit {
 
   @Input() post: Post;
-  domains: Domain[];
+  public selectedDomain: Domain;
 
   constructor(private postService: PostService,
               private domainService: DomainService) { }
 
-  selectedPost: Post;
 
   ngOnInit() {
+    console.log(this.post);
+    this.getDomain(this.post.Domain);
   }
 
   updateRank(post: Post, up: boolean) {
     if (up) {
-      post.Rank ++;
+      post.Rank += 1000;
     } else {
-      post.Rank --;
+      post.Rank -= 1000;
     }
     this.postService.updatePost(post);
     console.log(post);
   }
 
   getDomain(name) {
-    this.domains.push(this.domainService.getDomain(name));
+    this.domainService.getDomain(name).subscribe((data) => {
+      console.log(data);
+      this.selectedDomain = data;
+    });
   }
 }
