@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Post} from '../post';
+import {Domain} from '../domain';
 import {PostService} from '../post.service';
 import {ActivatedRoute} from '@angular/router';
 import {DomainService} from '../domain.service';
-import {Domain} from '../domain';
 
 @Component({
   selector: 'app-domain',
@@ -15,9 +15,9 @@ export class DomainComponent implements OnInit {
   posts: Post[];
   domain: Domain;
 
-  constructor(private postService: PostService,
-              private route: ActivatedRoute,
-              private domainService: DomainService) { }
+  constructor(private route: ActivatedRoute,
+              private domainService: DomainService,
+              private postService: PostService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -25,10 +25,10 @@ export class DomainComponent implements OnInit {
 
       this.getDomain(domainName);
 
-      console.log('domain: ' + this.domain);
+      console.log(this.domain);
 
-      // this.getPosts(domainName);
-      // console.log(this.posts);
+      this.getPosts(domainName);
+      console.log(this.posts);
     });
   }
 
