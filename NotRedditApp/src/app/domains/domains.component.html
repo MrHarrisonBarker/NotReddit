@@ -1,5 +1,13 @@
 <div class="container">
   <div class="row" *ngFor="let domain of domains">
-    {{ domain | json }}
+    {{domain.Name}}
+    {{domain.Title}}
+    {{domain.Topic}}
+    {{domain.Description}}
+    {{domain.Colour}}
+    {{domain.Content}}
+    {{domain.Icon}}
+    {{domain.Links}}
+    {{domain.Subscribers}}
   </div>
 </div>

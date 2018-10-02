@@ -15,6 +15,7 @@ export class DomainsComponent implements OnInit {
 
   ngOnInit() {
     this.getAllDomains();
+    console.log(this.domains);
   }
 
   getAllDomains() {

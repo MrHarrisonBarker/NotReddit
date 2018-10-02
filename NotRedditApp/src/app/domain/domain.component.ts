@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Post} from '../post';
 import {PostService} from '../post.service';
 import {ActivatedRoute} from '@angular/router';
+import {DomainService} from '../domain.service';
+import {Domain} from '../domain';
 
 @Component({
   selector: 'app-domain',
@@ -11,19 +13,35 @@ import {ActivatedRoute} from '@angular/router';
 export class DomainComponent implements OnInit {
 
   posts: Post[];
+  domain: Domain;
 
   constructor(private postService: PostService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private domainService: DomainService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      console.log(params['domain']);
-      this.getPosts(params['domain']);
+      const domainName = params['domain'];
+
+      this.getDomain(domainName);
+
+      console.log('domain: ' + this.domain);
+
+      // this.getPosts(domainName);
+      // console.log(this.posts);
     });
   }
 
-  getPosts(domain) {
-    this.postService.getPostByDomain(domain).subscribe(posts => this.posts = posts);
+  getPosts(domainName) {
+    this.postService.getPostByDomain(domainName).subscribe(posts => this.posts = posts);
+  }
+
+  getDomain(domainName) {
+    this.domainService.getDomain(domainName).subscribe( (domain) => {
+      console.log(domainName);
+      console.log(domain);
+      this.domain = domain;
+    });
   }
 
   updateRank(post: Post, up: boolean) {

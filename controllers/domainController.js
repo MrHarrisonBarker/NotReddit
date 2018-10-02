@@ -20,7 +20,7 @@ exports.createDomain = (req, res) => {
 };
 
 exports.readDomain = (req, res) => {
-    Domain.find({Name: req.params.domainname}, (err, domain) => {
+    Domain.findOne({Name: req.params.domainname}, (err, domain) => {
         if (err) {
             res.status(500).send(err);
         }

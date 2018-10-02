@@ -1,4 +1,5 @@
 export class Domain {
+  _id: String;
   Name: String;
   Title: String;
   Topic: String;
