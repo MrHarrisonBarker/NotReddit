@@ -20,7 +20,7 @@
   </div>
   <div class="col-11" style="overflow-wrap:break-word;">
     <div class="p-0"><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a></div>
-    <div class="p-0"><em>Uploaded to -> <a routerLink="/d/{{post.Domain}}">{{ post.Domain }}</a></em></div>
+    <div class="p-0" ><em>Uploaded to -> <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">{{ domain?.Name }}</a></em></div>
     <div class="p-0">() -> {{ post.Summary }}</div>
     <div class="p-0">By -> {{ post.Author }}</div>
     <div class="p-0">Posted -> {{ post.createdOn | date }}</div>
