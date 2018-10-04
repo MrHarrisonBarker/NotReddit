@@ -7,7 +7,7 @@ import {Location} from '@angular/common';
 @Component({
   selector: 'app-update-post',
   templateUrl: './update-post.component.html',
-  styleUrls: ['./update-post.component.css']
+  styleUrls: ['./update-post.component.scss']
 })
 export class UpdatePostComponent implements OnInit {
 

@@ -8,7 +8,7 @@ import {DomainService} from '../domain.service';
 @Component({
   selector: 'app-domain',
   templateUrl: './domain.component.html',
-  styleUrls: ['./domain.component.css']
+  styleUrls: ['./domain.component.scss']
 })
 export class DomainComponent implements OnInit {
 

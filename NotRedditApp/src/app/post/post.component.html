@@ -1,5 +1,5 @@
 <div class="row post-row">
-  <div class="col-1 align-self-center">
+  <div class="col-1 align-self-center rank-block">
     <svg xmlns="http://www.w3.org/2000/svg"
          width="8"
          height="8"
@@ -8,7 +8,7 @@
          (click)="updateRank(post,true)">>
       <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
     </svg>
-    <h4 class="text-center span3">{{ post.Rank }}</h4>
+    <h4 class="text-center span3 rank">{{ post.Rank }}</h4>
     <svg xmlns="http://www.w3.org/2000/svg"
          width="8"
          height="8"
@@ -19,11 +19,29 @@
     </svg>
   </div>
   <div class="col-11" style="overflow-wrap:break-word;">
-    <div class="p-0"><a class="h4" routerLink="/post/{{post._id}}">{{ post.postTitle }}</a></div>
-    <div class="p-0" ><em>Uploaded to -> <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">{{ domain?.Name }}</a></em></div>
-    <div class="p-0">() -> {{ post.Summary }}</div>
-    <div class="p-0">By -> {{ post.Author }}</div>
-    <div class="p-0">Posted -> {{ post.createdOn | date }}</div>
+    <div class="p-0">
+      <a class="h4" routerLink="/post/{{post._id}}">
+        {{ post.postTitle }}
+      </a>
+    </div>
+    <div class="p-0">
+      <em>
+        Uploaded to ->
+        <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
+          {{ domain?.Name }}
+        </a>
+        <img src={{domain?.Icon}} width="20px" height="20px">
+      </em>
+    </div>
+    <div class="p-0">
+      () -> {{ post.Summary }}
+    </div>
+    <div class="p-0">
+      By -> {{ post.Author }}
+    </div>
+    <div class="p-0">
+      Posted -> {{ post.createdOn | date }}
+    </div>
   </div>
 </div>
 

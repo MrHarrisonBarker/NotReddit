@@ -1,0 +1,44 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+
+.rank{
+  font-size: 1em;
+}
+.post {
+  background-color: lightgreen;
+  border: solid black;
+  overflow-wrap:break-word;
+}
+.rank-block {
+  border: solid red;
+}
+.voteBtn {
+  width: 20px ;
+  height: 20px  ;
+}
+.voteBtn-Up:Hover {
+  fill: #00FF7F;
+}
+.voteBtn-Down:Hover {
+  fill: #FF0000;
+}
+.post-row {
+  margin-bottom: 10px;
+}
+
+@include media-breakpoint-up(sm) {
+  .rank {
+    font-size: 0.8rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .rank {
+    font-size: 1rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .rank {
+    font-size: 1.6rem;
+  }
+}
