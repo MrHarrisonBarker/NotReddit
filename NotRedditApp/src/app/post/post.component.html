@@ -1,24 +1,26 @@
 <div class="row post-row" *ngIf="!(post.Content=='image')">
-  <div class="col-1 align-self-center rank-block">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="8"
-         height="8"
-         viewBox="0 0 8 8"
-         class="img voteBtn voteBtn-Up mx-auto d-block span3"
-         (click)="updateRank(post,true)">>
-      <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
-    </svg>
-    <h4 class="text-center span3 rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</h4>
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="8"
-         height="8"
-         viewBox="0 0 8 8"
-         class="img voteBtn voteBtn-Down mx-auto d-block span3"
-         (click)="updateRank(post,false)">
-      <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
-    </svg>
+  <div class="col-1 rank-block">
+    <div class="v-align">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="8"
+           height="8"
+           viewBox="0 0 8 8"
+           class="img voteBtn voteBtn-Up mx-auto d-block span3"
+           (click)="updateRank(post,true)">>
+        <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
+      </svg>
+      <h4 class="text-center span3 rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</h4>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="8"
+           height="8"
+           viewBox="0 0 8 8"
+           class="img voteBtn voteBtn-Down mx-auto d-block span3"
+           (click)="updateRank(post,false)">
+        <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
+      </svg>
+    </div>
   </div>
-  <div class="col-11" style="overflow-wrap:break-word;">
+  <div class="col post">
     <div class="p-0">
       <a class="h4" routerLink="/post/{{post._id}}">
         {{ post.postTitle }}
@@ -47,31 +49,52 @@
 
 
 <div class="row post-row" *ngIf="!(post.Content!=='image')">
-  <div class="col-1 align-self-center rank-block">
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="8"
-         height="8"
-         viewBox="0 0 8 8"
-         class="img voteBtn voteBtn-Up mx-auto d-block span3"
-         (click)="updateRank(post,true)">>
-      <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
-    </svg>
-    <h4 class="text-center span3 rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</h4>
-    <svg xmlns="http://www.w3.org/2000/svg"
-         width="8"
-         height="8"
-         viewBox="0 0 8 8"
-         class="img voteBtn voteBtn-Down mx-auto d-block span3"
-         (click)="updateRank(post,false)">
-      <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
-    </svg>
+  <div class="col-1 rank-block">
+    <div class="v-align">
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="8"
+           height="8"
+           viewBox="0 0 8 8"
+           class="img voteBtn voteBtn-Up mx-auto d-block span3"
+           (click)="updateRank(post,true)">>
+        <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
+      </svg>
+      <h4 class="text-center span3 rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</h4>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           width="8"
+           height="8"
+           viewBox="0 0 8 8" s
+           class="img voteBtn voteBtn-Down mx-auto d-block span3"
+           (click)="updateRank(post,false)">
+        <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
+      </svg>
+    </div>
   </div>
-  <div class="col-1 img-block">
-    <img src="{{post.url}}" class="img-fluid post-img">
+  <div class="col-2">
+    <div class="img-block mx-auto v-align">
+      <img src="{{post.url}}" class="img-fluid post-img">
+    </div>
   </div>
-  <div class="col-10" style="overflow-wrap:break-word;">
+  <div class="col post">
     <div class="p-0">
-      {{post.postTitle}}
+      <a class="h4" routerLink="/post/{{post._id}}">
+        {{ post.postTitle }}
+      </a>
+    </div>
+    <div class="p-0">
+      <em>
+        Uploaded to ->
+        <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
+          {{ domain?.Name }}
+        </a>
+        <img src={{domain?.Icon}} width="20px" height="20px">
+      </em>
+    </div>
+    <div class="p-0">
+      By -> {{ post.Author }}
+    </div>
+    <div class="p-0">
+      Posted -> {{ post.createdOn | date }}
     </div>
   </div>
 </div>

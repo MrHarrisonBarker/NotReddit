@@ -1,21 +1,29 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 .rank{
   font-size: 1em;
 }
 .post {
-  background-color: lightgreen;
   border: solid black;
   overflow-wrap:break-word;
 }
 .rank-block {
   border: solid red;
+  max-height: 100%;
 }
 .img-block {
   border: solid blue;
+  width: 140px;
+  height: 140px;
 }
 .post-img {
-  border: solid deeppink;
+  height: 100%;
 }
 .voteBtn {
   width: 20px ;
@@ -29,9 +37,12 @@
 }
 .post-row {
   margin-bottom: 10px;
-  max-height: 200px;
+  min-height: 150px;
+  border: solid green;
 }
-
+.v-align {
+  @include vertical-align();
+}
 @include media-breakpoint-up(sm) {
   .rank {
     font-size: 0.8rem;
