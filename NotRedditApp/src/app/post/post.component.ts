@@ -2,8 +2,12 @@ import {Component, Input, OnInit, NgZone} from '@angular/core';
 import { Post } from '../post';
 import {PostService} from '../post.service';
 import {DomainService} from '../domain.service';
+<<<<<<< Updated upstream
 import {Domain} from "../domain";
 import {el} from "@angular/platform-browser/testing/src/browser_util";
+=======
+import {Domain} from '../domain';
+>>>>>>> Stashed changes
 
 
 @Component({
