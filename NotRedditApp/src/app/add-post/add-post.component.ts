@@ -54,7 +54,7 @@ export class AddPostComponent implements OnInit {
     post.Rank = 0;
     post.Visible = submittedPost.Visible;
     post.Domain = submittedPost.Domain;
-    post.Summary = submittedPost.postBody.substr(0, 99);
+    post.Summary = submittedPost.postBody.substr(0, 98);
     post.url = submittedPost.url;
     post.Content = submittedPost.Content;
 

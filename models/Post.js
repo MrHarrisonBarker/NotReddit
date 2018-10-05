@@ -19,7 +19,8 @@ const PostSchema = new Schema({
         required: true
     },
     Visible: {
-        type: Boolean
+        type: Boolean,
+        required: true
     },
     Domain: {
         type: String

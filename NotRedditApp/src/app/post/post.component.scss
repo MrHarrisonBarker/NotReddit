@@ -11,6 +11,12 @@
 .rank-block {
   border: solid red;
 }
+.img-block {
+  border: solid blue;
+}
+.post-img {
+  border: solid deeppink;
+}
 .voteBtn {
   width: 20px ;
   height: 20px  ;
@@ -23,6 +29,7 @@
 }
 .post-row {
   margin-bottom: 10px;
+  max-height: 200px;
 }
 
 @include media-breakpoint-up(sm) {
