@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row domain-row" *ngFor="let domain of domains">
+    <div class="col domain">
+      <div class="text-right">
+        <img src={{domain?.Icon}} class="img-fluid domain-icon">
+      </div>
+      <div class="h4">
+        {{domain.Title}}
+        <a routerLink="/d/{{domain.Name}}">
+        /{{ domain.Name }}
+        </a>
+      </div>
+      <div class="p-0">
+        Topic -> {{domain.Topic}}
+      </div>
+      <div class="p-0">
+        Content -> {{domain.Content}}
+      </div>
+    </div>
+  </div>
+</div>
