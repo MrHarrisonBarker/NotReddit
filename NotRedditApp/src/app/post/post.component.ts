@@ -3,6 +3,7 @@ import { Post } from '../post';
 import {PostService} from '../post.service';
 import {DomainService} from '../domain.service';
 import {Domain} from "../domain";
+import {el} from "@angular/platform-browser/testing/src/browser_util";
 
 
 @Component({
@@ -14,6 +15,8 @@ export class PostComponent implements OnInit {
 
   @Input() post: Post;
   domain: Domain;
+  voteStatus: String;
+  hasVoteChanged: Boolean;
 
   constructor(private postService: PostService,
               private domainService: DomainService) {
@@ -27,9 +30,26 @@ export class PostComponent implements OnInit {
 
   updateRank(post: Post, up: boolean) {
     if (up) {
-      post.Rank += 1;
+      if (this.hasVoteChanged){
+        post.Rank += 1;
+        this.hasVoteChanged = false;
+        this.voteStatus = 'black';
+      } else {
+        post.Rank += 1;
+        this.hasVoteChanged = true;
+        this.voteStatus = 'green';
+      }
     } else {
-      post.Rank -= 1;
+      if (this.hasVoteChanged) {
+        post.Rank -= 1;
+        this.hasVoteChanged = false;
+        this.voteStatus = 'black';
+      } else {
+        post.Rank -= 1;
+        this.hasVoteChanged = true;
+        this.voteStatus = 'red';
+      }
+
     }
     this.postService.updatePost(post);
     console.log(post);
