@@ -19,6 +19,7 @@ import { DomainComponent } from './domain/domain.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { DomainListComponent } from './domain-list/domain-list.component';
 import { StartComponent } from './start/start.component';
+import {NgPipesModule} from 'ngx-pipes';
 
 Sentry.init({
   dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -45,7 +46,8 @@ class SentryErrorHandler implements ErrorHandler {
     AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
     AngularFireAuthModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgPipesModule
     ],
   providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService ],
   bootstrap: [ AppComponent ]

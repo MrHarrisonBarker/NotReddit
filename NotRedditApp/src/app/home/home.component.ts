@@ -10,15 +10,21 @@ import {Post} from '../post';
 export class HomeComponent implements OnInit {
 
   posts: Post[];
+  isFluid: boolean;
 
   constructor(private postService: PostService) {
   }
 
   ngOnInit() {
+    this.isFluid = true;
     this.getAllPosts();
   }
 
   getAllPosts() {
     this.postService.getAllPosts().subscribe(posts => this.posts = posts);
+  }
+
+  changeContainer() {
+    this.isFluid = this.isFluid ? false : true;
   }
 }

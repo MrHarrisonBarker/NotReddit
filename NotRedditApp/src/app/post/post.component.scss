@@ -15,7 +15,7 @@
 }
 .rank-block {
   border: solid red;
-  max-height: 100%;
+  //max-height: 100%;
 }
 .img-block {
   border: solid blue;
@@ -37,8 +37,10 @@
 }
 .post-row {
   margin-bottom: 10px;
-  min-height: 150px;
   border: solid green;
+}
+.img-prev {
+  max-width: 140px;
 }
 .v-align {
   @include vertical-align();
