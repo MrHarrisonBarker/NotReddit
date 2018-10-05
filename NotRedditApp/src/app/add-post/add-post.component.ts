@@ -15,7 +15,7 @@ export class AddPostComponent implements OnInit {
   addForm: FormGroup;
   domains: Domain[];
 
-  contentTypes = ['image','link','text'];
+  contentTypes = ['image', 'link', 'text'];
 
   constructor(private postService: PostService,
               private formBuilder: FormBuilder,

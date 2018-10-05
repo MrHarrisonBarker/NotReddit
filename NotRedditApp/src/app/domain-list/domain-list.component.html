@@ -5,7 +5,7 @@
         <img src={{domain?.Icon}} class="img-fluid domain-icon">
       </div>
       <div class="h4">
-        {{domain.Title}}
+        <div [ngStyle]="{'color': domain.Colour}" class="d-inline">{{domain.Title}}</div>
         <a routerLink="/d/{{domain.Name}}">
         /{{ domain.Name }}
         </a>
@@ -15,6 +15,9 @@
       </div>
       <div class="p-0">
         Content -> {{domain.Content}}
+      </div>
+      <div class="p-0">
+        Subs -> {{domain.Subscribers}}
       </div>
     </div>
   </div>

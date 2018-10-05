@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Domain} from './domain';
+import {Post} from "./post";
 
 
 const httpOptions = {
@@ -23,5 +24,16 @@ export class DomainService {
 
   getDomain(name): Observable<Domain> {
     return this.client.get<Domain>(`${this.httpUrl}/${name}`, httpOptions);
+  }
+
+  startDomain(domain: Domain) {
+    this.client.post<Post>(this.httpUrl, domain, httpOptions)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('Error occured');
+        });
   }
 }
