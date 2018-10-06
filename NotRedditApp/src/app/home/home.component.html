@@ -5,9 +5,26 @@
         Home
       </div>
     </div>
-    <div class="col">
-      <button (click)="changeContainer()" class="btn float-right">fluid</button>
-    </div>
+      <div class="col">
+        <div class="btn-group float-right" role="group" aria-label="Button group with nested dropdown">
+          <button (click)="changeContainer()" class="btn btn-dark">fluid</button>
+          <button type="button" class="btn btn-secondary">2</button>
+
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Order
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <button class="dropdown-item" type="button" (click)="orderPosts('postTitle',true)">Title (&#8593;)</button>
+              <button class="dropdown-item" type="button" (click)="orderPosts('postTitle',false)">Title (&#8595;)</button>
+              <button class="dropdown-item" type="button" (click)="orderPosts('createdOn',true)">Date (&#8593;)</button>
+              <button class="dropdown-item" type="button" (click)="orderPosts('createdOn',false)">Date (&#8595;)</button>
+              <button class="dropdown-item" type="button" (click)="orderPosts('Rank',true)">Rank (&#8593;)</button>
+              <button class="dropdown-item" type="button" (click)="orderPosts('Rank',false)">Rank (&#8595;)</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
-  <app-post *ngFor="let post of posts | orderBy" [post]="post"></app-post>
+  <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </div>
