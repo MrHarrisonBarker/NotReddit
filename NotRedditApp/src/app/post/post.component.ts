@@ -4,6 +4,7 @@ import {PostService} from '../post.service';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
 
+// TODO: Crosspost
 
 @Component({
   selector: 'app-post',
