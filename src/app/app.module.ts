@@ -11,46 +11,46 @@ import {UsersComponent} from './users/users.component';
 import {environment} from '../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AuthService} from './auth.service';
-import { HomeComponent } from './home/home.component';
-import { AddPostComponent } from './add-post/add-post.component';
+import {HomeComponent} from './home/home.component';
+import {AddPostComponent} from './add-post/add-post.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { UpdatePostComponent } from './update-post/update-post.component';
-import { DomainComponent } from './domain/domain.component';
-import { PostDetailComponent } from './post-detail/post-detail.component';
-import { DomainListComponent } from './domain-list/domain-list.component';
-import { StartComponent } from './start/start.component';
+import {UpdatePostComponent} from './update-post/update-post.component';
+import {DomainComponent} from './domain/domain.component';
+import {PostDetailComponent} from './post-detail/post-detail.component';
+import {DomainListComponent} from './domain-list/domain-list.component';
+import {StartComponent} from './start/start.component';
 import {NgPipesModule} from 'ngx-pipes';
 
 Sentry.init({
-  dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
+    dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
 });
 
 @Injectable()
 class SentryErrorHandler implements ErrorHandler {
-  constructor() {
-  }
+    constructor() {
+    }
 
-  handleError(error) {
-    Sentry.captureException(error.originalError || error);
-    throw error;
-  }
+    handleError(error) {
+        Sentry.captureException(error.originalError || error);
+        throw error;
+    }
 }
 
 
 @NgModule({
-  declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
-    AngularFireAuthModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgPipesModule
+    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
+        AngularFireAuthModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgPipesModule
     ],
-  providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService ],
-  bootstrap: [ AppComponent ]
+    providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {
