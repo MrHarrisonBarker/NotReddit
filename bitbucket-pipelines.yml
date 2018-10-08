@@ -17,4 +17,5 @@ pipelines:
         - ls -ltr
         - pwd
         - git status
+        - git cd ./dist
         - git push git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:master
