@@ -7,3 +7,14 @@ handlers:
   upload: dist/index.html
 - url: /
   static_dir: dist
+skip_files:
+- src/
+- e2e/
+- node_modules/
+- ^\.git/.*
+- ^(.*/)?#.*#$  
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^(.*/)?.*\.bak$
