@@ -18,6 +18,6 @@ pipelines:
       - gcloud config set project $GCLOUD_PROJECT
       # Building
       - npm install
-      - npm run start
+      - npm run build
       # Deploying the application
       - gcloud -q app deploy app.yaml
