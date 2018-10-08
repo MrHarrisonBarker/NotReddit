@@ -1,3 +1,4 @@
+<div [ngClass]="isDark ? 'dark' : ''">
 <div [ngClass]="isFluid ? 'container-fluid' : 'container'">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">
@@ -25,10 +26,12 @@
       </ul>
       <ul class="ml-auto navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" (click)="changeContainer()">Fluid</a>
+          <a class="nav-link" (click)="changeContainer()">
+            Fluid
+          </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
+          <a class="nav-link" (click)="changeMode()">
             Dark mode
           </a>
         </li>
@@ -100,3 +103,4 @@
     </nav>
   </div>
 </footer>
+</div>

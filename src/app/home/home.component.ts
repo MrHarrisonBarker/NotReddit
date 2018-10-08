@@ -11,12 +11,14 @@ export class HomeComponent implements OnInit {
 
   posts: Post[];
   isFluid: boolean;
+  isDark: boolean;
 
   constructor(private postService: PostService) {
   }
 
   ngOnInit() {
     this.isFluid = true;
+    this.isDark = false;
     this.getAllPosts();
   }
 
@@ -33,12 +35,16 @@ export class HomeComponent implements OnInit {
           comparison = -1;
         }
         return comparison;
-      })
+      });
     });
   }
 
   changeContainer() {
     this.isFluid = this.isFluid ? false : true;
+  }
+
+  changeMode() {
+    this.isDark = this.isDark ? false : true;
   }
 
   orderPosts(property, isAscending) {
