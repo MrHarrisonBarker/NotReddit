@@ -1,23 +1,14 @@
 
 image: atlassian/default-image:2
 
-pipelines:
-  default:
+clone: # help to clone our source here
+  depth: full
+pipelines: # We set up all the pipeline or actions beneath
+  default: # here most always trigger before any other pipeline
   - step:
-      deployment: staging
-      script: # Modify the commands below to build your repository.
-      # Downloading the Google Cloud SDK
-      - curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-155.0.0-linux-x86_64.tar.gz
-      - tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/
-      - /tmp/google-cloud-sdk/install.sh -q
-      - source /tmp/google-cloud-sdk/path.bash.inc
-      # Authenticating with the service account key file
-      - echo $GCLOUD_API_KEYFILE | base64 --decode --ignore-garbage > ./gcloud-api-key.json
-      - gcloud auth activate-service-account --key-file gcloud-api-key.json
-      # Linking to the Google Cloud project
-      - gcloud config set project $GCLOUD_PROJECT
-      # Building
-      - npm install
-      - npm run build
-      # Deploying the application
-      - gcloud -q app deploy app.yaml
+      script:
+        - npm install
+        - npm run start
+        - cd ./dist
+        - git init
+        - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:master
