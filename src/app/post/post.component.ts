@@ -3,6 +3,7 @@ import { Post } from '../post';
 import {PostService} from '../post.service';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
+import {GlobalsService} from '../globals.service';
 
 // TODO: Crosspost
 
@@ -19,7 +20,8 @@ export class PostComponent implements OnInit {
   hasVoteChanged: Boolean;
 
   constructor(private postService: PostService,
-              private domainService: DomainService) {
+              private domainService: DomainService,
+              public globals: GlobalsService) {
   }
 
 

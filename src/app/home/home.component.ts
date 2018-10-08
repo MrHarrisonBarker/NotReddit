@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {Post} from '../post';
+import {GlobalsService} from '../globals.service';
 
 @Component({
   selector: 'app-home',
@@ -10,15 +11,13 @@ import {Post} from '../post';
 export class HomeComponent implements OnInit {
 
   posts: Post[];
-  isFluid: boolean;
-  isDark: boolean;
 
-  constructor(private postService: PostService) {
+
+  constructor(private postService: PostService,
+              public globals: GlobalsService) {
   }
 
   ngOnInit() {
-    this.isFluid = true;
-    this.isDark = false;
     this.getAllPosts();
   }
 
@@ -40,11 +39,12 @@ export class HomeComponent implements OnInit {
   }
 
   changeContainer() {
-    this.isFluid = this.isFluid ? false : true;
+    this.globals.isFluid = this.globals.isFluid ? false : true;
   }
 
   changeMode() {
-    this.isDark = this.isDark ? false : true;
+    this.globals.isDark = this.globals.isDark ? false : true;
+    console.log(this.globals.isDark);
   }
 
   orderPosts(property, isAscending) {
@@ -69,7 +69,7 @@ export class HomeComponent implements OnInit {
         return comparison;
       }
 
-    })
+    });
   }
 
 }

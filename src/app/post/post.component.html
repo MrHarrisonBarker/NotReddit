@@ -1,4 +1,5 @@
-<div class="row  no-gutters post-row" *ngIf="!(post.Content=='image')">
+<div [ngClass]="globals.isDark ? 'dark' : 'light'">
+<div class="row no-gutters post-row" *ngIf="!(post.Content=='image')">
   <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
     <div class="v-align">
     <svg xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +41,9 @@
       -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
     </div>
     <div class="btn-block d-inline">
-      <a href="#" style="color: black"><span class="badge badge-pill">comments</span> </a>
-      <a href="#" style="color: black"><span class="badge badge-pill">share</span> </a>
-      <a href="#" style="color: black"><span class="badge badge-pill">crosspost</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
     </div>
   </div>
 </div>
@@ -91,9 +92,10 @@
       -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
     </div>
     <div class="btn-block d-inline">
-      <a href="#" style="color: black"><span class="badge badge-pill">comments</span> </a>
-      <a href="#" style="color: black"><span class="badge badge-pill">share</span> </a>
-      <a href="#" style="color: black"><span class="badge badge-pill">crosspost</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
+      <a href="#" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
     </div>
   </div>
+</div>
 </div>
