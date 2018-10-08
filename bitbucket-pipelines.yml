@@ -19,5 +19,6 @@ pipelines:
       # Building
       - npm install
       - npm run build
+      - cd ./dist
       # Deploying the application
       - gcloud -q app deploy app.yaml
