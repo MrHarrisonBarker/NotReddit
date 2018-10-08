@@ -7,6 +7,7 @@ pipelines: # We set up all the pipeline or actions beneath
   default: # here most always trigger before any other pipeline
   - step:
       script:
+        - npm install -g heroku
         - npm install
         - npm run build
         - cd ./dist
