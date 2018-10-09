@@ -1,6 +1,6 @@
 <div [ngClass]="globals.isDark ? 'dark' : 'light'">
     <div [ngClass]="isFluid ? 'container-fluid' : 'container'">
-        <nav class="navbar navbar-expand-lg " [ngClass]="globals.isDark ? 'dark navbar-dark' : 'light navbar-light'">
+        <nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xl " [ngClass]="globals.isDark ? 'dark navbar-dark' : 'light navbar-light'">
             <a class="navbar-brand" href="/">
                 <!--<svg width="30" height="30">
                 <image src="../../assets/logo.svg" width="30" height="30" alt="" class="d-inline-block align-top" style="fill: black"/>
@@ -53,8 +53,20 @@
         <div style="height: 20px"></div>
 
         <div class="row">
+            <div class="col">
+                <div class="btn-group" role="group" aria-label="Select type">
+                    <button type="button" class="btn" (click)="setFormState('post')">Post</button>
+                    <button type="button" class="btn" (click)="setFormState('image')">Image</button>
+                    <button type="button" class="btn" (click)="setFormState('link')">Link</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 20px"></div>
+
+        <div class="row">
             <div class="col-12">
-                <form [formGroup]="addForm" (ngSubmit)="submitForm()" class="form-group">
+                <form [formGroup]="addPostForm" (ngSubmit)="submitPostForm()" class="form-group" *ngIf="!(formState!='post')">
                     <div class="form-group">
                         <input
                                 formControlName="postTitle"
@@ -66,11 +78,12 @@
                     </div>
 
                     <div class="form-group">
-          <textarea
-                  formControlName="postBody"
-                  placeholder="Body"
-                  class="form-control"
-                  rows="10"></textarea>
+                        <textarea
+                            formControlName="postBody"
+                            placeholder="Body"
+                            class="form-control"
+                            rows="10">
+                        </textarea>
                     </div>
 
                     <div class="form-group form-check">
@@ -80,17 +93,10 @@
                                 type="checkbox"
                                 required
                                 checked>
-                        <label class="form-check-label">Visible? </label>
+                        <label class="form-check-label">
+                            Visible?
+                        </label>
                     </div>
-
-                    <!--<div class="form-group">
-                      <label>Domain</label>
-                      <select class="form-control" id="domain" formControlName="Domain">
-                        <option *ngFor="let domain of domains" >
-                          {{domain.Name}}
-                        </option>
-                      </select>
-                    </div>-->
 
                     <div class="form-group">
                         <input
@@ -101,18 +107,42 @@
                                 type="text">
                     </div>
 
-                    <!--<div class="form-group">
-                      <input
-                        formControlName="Content"
-                        placeholder="Content"
-                        class="form-control"
-                        required
-                        type="text">
-                    </div>-->
+                    <button class="btn">
+                        Submit
+                    </button>
+
+                </form>
+
+                <form [formGroup]="addImageForm" (ngSubmit)="submitImageForm()" class="form-group" *ngIf="!(formState!='image')">
                     <div class="form-group">
-                        <select formControlName="Content" class="custom-select form-control">
-                            <option *ngFor="let type of contentTypes">{{type}}</option>
-                        </select>
+                        <input
+                                formControlName="postTitle"
+                                placeholder="Title"
+                                class="form-control"
+                                type="text"
+                                required
+                                #spy>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input
+                                formControlName="Visible"
+                                class="form-check-input"
+                                type="checkbox"
+                                required
+                                checked>
+                        <label class="form-check-label">
+                            Visible?
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                                formControlName="Domain"
+                                placeholder="Domain"
+                                class="form-control"
+                                required
+                                type="text">
                     </div>
 
                     <div class="form-group">
@@ -120,6 +150,54 @@
                                 formControlName="url"
                                 placeholder="url"
                                 class="form-control"
+                                required
+                                type="text">
+                    </div>
+
+                    <button class="btn">
+                        Submit
+                    </button>
+
+                </form>
+
+                <form [formGroup]="addLinkForm" (ngSubmit)="submitLinkForm()" class="form-group" *ngIf="!(formState!='link')">
+                    <div class="form-group">
+                        <input
+                                formControlName="postTitle"
+                                placeholder="Title"
+                                class="form-control"
+                                type="text"
+                                required
+                                #spy>
+                    </div>
+
+                    <div class="form-group form-check">
+                        <input
+                                formControlName="Visible"
+                                class="form-check-input"
+                                type="checkbox"
+                                required
+                                checked>
+                        <label class="form-check-label">
+                            Visible?
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                                formControlName="Domain"
+                                placeholder="Domain"
+                                class="form-control"
+                                required
+                                type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                                formControlName="url"
+                                placeholder="url"
+                                class="form-control"
+                                required
                                 type="text">
                     </div>
 
