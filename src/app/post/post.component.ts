@@ -18,6 +18,7 @@ export class PostComponent implements OnInit {
     domain: Domain;
     voteStatus: String;
     hasVoteChanged: Boolean;
+    beingPreviewed: Boolean;
 
     constructor(private postService: PostService,
                 private domainService: DomainService,
@@ -63,5 +64,10 @@ export class PostComponent implements OnInit {
             console.log(domain);
             this.domain = domain;
         });
+    }
+
+    prevImage() {
+        this.beingPreviewed = this.beingPreviewed ? false : true;
+        console.log(this.beingPreviewed);
     }
 }
