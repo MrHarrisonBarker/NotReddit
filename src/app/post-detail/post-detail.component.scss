@@ -1,0 +1,159 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+.light .p-0 {
+  color: rgb(51, 51, 51);
+}
+.dark .p-0 {
+  color: rgb(252, 252, 252);
+}
+.dark a {
+  color: rgb(135,206,250);
+}
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.light .rank {
+  font-size: small;
+  text-align: center;
+  color: rgb(51, 51, 51);
+  // font-weight: bold;
+}
+.dark .rank {
+  font-size: small;
+  text-align: center;
+  color: rgb(252, 252, 252);
+  // font-weight: bold;
+}
+.post {
+  // border: solid black;
+  overflow-wrap: break-word;
+}
+.rank-block {
+  // border: solid red;
+  //max-height: 100%;
+}
+
+.img-block {
+  // border: solid blue;
+  max-width: 100%;
+  max-height: 100%;
+  // width: 140px;
+  // height: 140px;
+}
+.post-img {
+  max-width: 70px;
+  max-height: 70px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.light .voteBtn {
+  width: 15px;
+  height: 15px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  background: no-repeat center center;
+  margin: 2px auto 0px;
+  outline: none;
+  fill: rgb(51, 51, 51);
+}
+.dark .voteBtn {
+  width: 15px;
+  height: 15px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  background: no-repeat center center;
+  margin: 2px auto 0px;
+  outline: none;
+  fill: rgb(252, 252, 252);
+}
+.light .voteBtn-Up:Hover {
+  fill: #00FF7F;
+}
+.light .voteBtn-Down:Hover {
+  fill: #FF0000;
+}
+.dark .voteBtn-Up:Hover {
+  fill: #00FF7F;
+}
+.dark .voteBtn-Down:Hover {
+  fill: #FF0000;
+}
+
+.post-row {
+  margin-bottom: 10px;
+  // border: solid green;
+}
+.light .post-row:hover {
+  background-color: rgb(246, 246, 246);
+}
+.dark .post-row:hover {
+  background-color: rgb(41, 41, 41);
+}
+.img-prev {
+  // max-width: 140px;
+  max-width: 70px;
+  max-height: 70px;
+}
+.postTitle {
+  font-size: large;
+}
+
+.sub-text {
+  font-size: small;
+}
+.sum-text {
+  font-size: medium;
+}
+.btn-block {
+  font-size: small;
+}
+.badge:hover {
+  background-color: #00FF7F;
+}
+.v-align {
+  @include vertical-align();
+}
+body{
+  line-height: 0.5;
+}
+.dark {
+  background-color: rgb(51, 51, 51) ;
+}
+.dark .page-link {
+  color: rgb(255,255,255);
+}
+.dark .page-item.active .page-link{
+  background-color: rgb(252, 252, 252);
+  border-color: rgb(41, 41, 41);
+  color: rgb(51, 51, 51);
+}
+.dark .page-link {
+  color: rgb(51, 51, 51);
+}
+.dark .page-item .page-link{
+  background-color: rgb(51, 51, 51);
+  border-color: rgb(41, 41, 41);
+  color: rgb(255,255,255);
+}
+.light {
+  background-color: rgb(252, 252, 252);
+}
+.light .page-link {
+  color: rgb(51, 51, 51);
+}
+.light .page-item.active .page-link{
+  background-color: rgb(51, 51, 51);
+  border-color: rgb(51, 51, 51);
+  color: rgb(252, 252, 252);
+}
+.light .logo {
+  fill: rgb(51, 51, 51);
+}
+.dark .logo {
+  fill: rgb(252, 252, 252);
+}
