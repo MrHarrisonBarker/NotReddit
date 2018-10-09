@@ -40,11 +40,7 @@ export class DomainComponent implements OnInit {
     }
 
     getDomain(domainName) {
-        this.domainService.getDomain(domainName).subscribe((domain) => {
-            console.log(domainName);
-            console.log(domain);
-            this.domain = domain;
-        });
+        this.domainService.getDomain(domainName).subscribe(domain => this.domain = domain );
     }
 
     changeContainer() {
@@ -81,3 +77,4 @@ export class DomainComponent implements OnInit {
         });
 
     }
+}

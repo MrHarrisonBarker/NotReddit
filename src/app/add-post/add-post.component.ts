@@ -4,6 +4,7 @@ import {PostService} from '../post.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
+import {GlobalsService} from '../globals.service';
 
 @Component({
   selector: 'app-add-post',
@@ -19,7 +20,8 @@ export class AddPostComponent implements OnInit {
 
   constructor(private postService: PostService,
               private formBuilder: FormBuilder,
-              private domainService: DomainService) {
+              private domainService: DomainService,
+              public globals: GlobalsService) {
     this.addForm = formBuilder.group({
       'postTitle':  ['', Validators.required ],
       'postBody': [''],
@@ -63,5 +65,14 @@ export class AddPostComponent implements OnInit {
 
     this.addPost(post);
   }
+
+    changeContainer() {
+        this.globals.isFluid = this.globals.isFluid ? false : true;
+    }
+
+    changeMode() {
+        this.globals.isDark = this.globals.isDark ? false : true;
+        console.log(this.globals.isDark);
+    }
 
 }
