@@ -19,22 +19,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPosts();
+    // this.orderPosts('postTitle', true);
   }
 
   getAllPosts() {
     this.postService.getAllPosts().subscribe(posts => {
-      this.posts = posts.sort(function (a, b) {
-        const titleA = a.createdOn;
-        const titleB = b.createdOn;
-
-        let comparison = 0;
-        if (titleA > titleB) {
-          comparison = 1;
-        } else if (titleA < titleB) {
-          comparison = -1;
-        }
-        return comparison;
-      });
+        // this.posts.splice(0, 10);
+        console.log(posts);
+        this.posts = posts;
+        this.orderPosts('createdOn', true);
     });
   }
 

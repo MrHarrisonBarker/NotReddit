@@ -86,7 +86,7 @@ export class AddPostComponent implements OnInit {
 
     submitImageForm() {
         const post = new Post();
-        const submittedPost = this.addPostForm.value;
+        const submittedPost = this.addImageForm.value;
 
         post.postTitle = submittedPost.postTitle;
         post.Author = 'Harrison';
@@ -104,7 +104,7 @@ export class AddPostComponent implements OnInit {
 
     submitLinkForm() {
         const post = new Post();
-        const submittedPost = this.addPostForm.value;
+        const submittedPost = this.addLinkForm.value;
 
         post.postTitle = submittedPost.postTitle;
         post.Author = 'Harrison';
