@@ -1,20 +1,13 @@
-# This is a sample build configuration for Docker.
-# Check our guides at https://confluence.atlassian.com/x/O1toN for more examples.
-# Only use spaces to indent your .yml configuration.
-# -----
-# You can specify a custom docker image from Docker Hub as your build environment.
+
 image: atlassian/default-image:2
 
-pipelines:
-  default:
+clone: # help to clone our source here
+  depth: full
+pipelines: # We set up all the pipeline or actions beneath
+  default: # here most always trigger before any other pipeline
   - step:
-      services:
-      - docker
-      caches:
-        - node
       script:
+        - npm install -g heroku
         - npm install
-        - npm install -g @angular/cli
-        - ng build
-        - ls -ltr
+        - npm run build
         - pwd

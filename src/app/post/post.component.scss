@@ -1,5 +1,13 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
-
+.light .p-0 {
+  color: rgb(51, 51, 51);
+}
+.dark .p-0 {
+  color: rgb(252, 252, 252);
+}
+.dark a {
+  color: rgb(135,206,250);
+}
 @mixin vertical-align {
   position: relative;
   top: 50%;
@@ -7,9 +15,16 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.rank {
+.light .rank {
   font-size: small;
   text-align: center;
+  color: rgb(51, 51, 51);
+  // font-weight: bold;
+}
+.dark .rank {
+  font-size: small;
+  text-align: center;
+  color: rgb(252, 252, 252);
   // font-weight: bold;
 }
 .post {
@@ -28,15 +43,13 @@
   // width: 140px;
   // height: 140px;
 }
-
 .post-img {
   max-width: 70px;
   max-height: 70px;
   margin-left: 15px;
   margin-right: 15px;
 }
-
-.voteBtn {
+.light .voteBtn {
   width: 15px;
   height: 15px;
   width: 100%;
@@ -44,14 +57,30 @@
   cursor: pointer;
   background: no-repeat center center;
   margin: 2px auto 0px;
-  outline: none
+  outline: none;
+  fill: rgb(51, 51, 51);
 }
-
-.voteBtn-Up:Hover {
+.dark .voteBtn {
+  width: 15px;
+  height: 15px;
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  background: no-repeat center center;
+  margin: 2px auto 0px;
+  outline: none;
+  fill: rgb(252, 252, 252);
+}
+.light .voteBtn-Up:Hover {
   fill: #00FF7F;
 }
-
-.voteBtn-Down:Hover {
+.light .voteBtn-Down:Hover {
+  fill: #FF0000;
+}
+.dark .voteBtn-Up:Hover {
+  fill: #00FF7F;
+}
+.dark .voteBtn-Down:Hover {
   fill: #FF0000;
 }
 
@@ -59,10 +88,12 @@
   margin-bottom: 10px;
   // border: solid green;
 }
-.post-row:hover {
-  background-color: #F6F6F6;
+.light .post-row:hover {
+  background-color: rgb(246, 246, 246);
 }
-
+.dark .post-row:hover {
+  background-color: rgb(41, 41, 41);
+}
 .img-prev {
   // max-width: 140px;
    max-width: 70px;

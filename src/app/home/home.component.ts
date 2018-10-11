@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {Post} from '../post';
+import {GlobalsService} from '../globals.service';
 
 @Component({
   selector: 'app-home',
@@ -10,35 +11,33 @@ import {Post} from '../post';
 export class HomeComponent implements OnInit {
 
   posts: Post[];
-  isFluid: boolean;
 
-  constructor(private postService: PostService) {
+
+  constructor(private postService: PostService,
+              public globals: GlobalsService) {
   }
 
   ngOnInit() {
-    this.isFluid = true;
     this.getAllPosts();
+    // this.orderPosts('postTitle', true);
   }
 
   getAllPosts() {
     this.postService.getAllPosts().subscribe(posts => {
-      this.posts = posts.sort(function (a, b) {
-        const titleA = a.createdOn;
-        const titleB = b.createdOn;
-
-        let comparison = 0;
-        if (titleA > titleB) {
-          comparison = 1;
-        } else if (titleA < titleB) {
-          comparison = -1;
-        }
-        return comparison;
-      })
+        // this.posts.splice(0, 10);
+        console.log(posts);
+        this.posts = posts;
+        this.orderPosts('createdOn', true);
     });
   }
 
   changeContainer() {
-    this.isFluid = this.isFluid ? false : true;
+    this.globals.isFluid = this.globals.isFluid ? false : true;
+  }
+
+  changeMode() {
+    this.globals.isDark = this.globals.isDark ? false : true;
+    console.log(this.globals.isDark);
   }
 
   orderPosts(property, isAscending) {
@@ -63,7 +62,7 @@ export class HomeComponent implements OnInit {
         return comparison;
       }
 
-    })
+    });
   }
 
 }

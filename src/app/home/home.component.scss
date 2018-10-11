@@ -1,10 +1,40 @@
 body{
   line-height: 0.5;
 }
-.page-link {
-  color: black;
+.dark {
+  background-color: rgb(51, 51, 51) ;
 }
-.page-item.active .page-link{
-  background-color: black;
-  border-color: black;
+.dark .page-link {
+  color: rgb(255,255,255);
 }
+.dark .page-item.active .page-link{
+  background-color: rgb(252, 252, 252);
+  border-color: rgb(41, 41, 41);
+  color: rgb(51, 51, 51);
+}
+.dark .page-link {
+  color: rgb(51, 51, 51);
+}
+.dark .page-item .page-link{
+  background-color: rgb(51, 51, 51);
+  border-color: rgb(41, 41, 41);
+  color: rgb(255,255,255);
+}
+.light {
+  background-color: rgb(252, 252, 252);
+}
+.light .page-link {
+  color: rgb(51, 51, 51);
+}
+.light .page-item.active .page-link{
+  background-color: rgb(51, 51, 51);
+  border-color: rgb(51, 51, 51);
+  color: rgb(252, 252, 252);
+}
+.light .logo {
+  fill: rgb(51, 51, 51);
+}
+.dark .logo {
+  fill: rgb(252, 252, 252);
+}
+

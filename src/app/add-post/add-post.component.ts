@@ -1,67 +1,135 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from '../post';
 import {PostService} from '../post.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
+import {GlobalsService} from '../globals.service';
 
 @Component({
-  selector: 'app-add-post',
-  templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.scss']
+    selector: 'app-add-post',
+    templateUrl: './add-post.component.html',
+    styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
 
-  addForm: FormGroup;
-  domains: Domain[];
+    addPostForm: FormGroup;
+    addImageForm: FormGroup;
+    addLinkForm: FormGroup;
 
-  contentTypes = ['image', 'link', 'text'];
+    formState: String;
 
-  constructor(private postService: PostService,
-              private formBuilder: FormBuilder,
-              private domainService: DomainService) {
-    this.addForm = formBuilder.group({
-      'postTitle':  ['', Validators.required ],
-      'postBody': [''],
-      'Visible': ['', Validators.required ],
-      'Domain': ['', Validators.required ],
-      'url': [''],
-      'Content': ['']
-    });
-  }
+    domains: Domain[];
 
-  ngOnInit() {
-    // this.getAllDomains();
-  }
+    constructor(private postService: PostService,
+                private formBuilder: FormBuilder,
+                private domainService: DomainService,
+                public globals: GlobalsService) {
+        this.addPostForm = formBuilder.group({
+            'postTitle': ['', Validators.required],
+            'postBody': [''],
+            'Visible': [''],
+            'Domain': ['']
+        });
+        this.addImageForm = formBuilder.group({
+            'postTitle': ['', Validators.required],
+            'Visible': [''],
+            'Domain': [''],
+            'url': ['']
+        });
+        this.addLinkForm = formBuilder.group({
+            'postTitle': ['', Validators.required],
+            'Visible': [''],
+            'Domain': [''],
+            'url': ['']
+        });
+    }
 
-  addPost(post: Post) {
-    this.postService.addPost(post);
-    console.log('Post: ' + post);
-  }
+    ngOnInit() {
+        this.formState = 'post';
+        // this.getAllDomains();
+    }
 
-  getAllDomains() {
-    this.domainService.getAllDomains().subscribe(data => this.domains = data);
-    console.log(this.domains);
-  }
+    setFormState(state) {
+        this.formState = state;
+        console.log(state);
+    }
 
-  submitForm() {
-    const post = new Post();
-    const submittedPost = this.addForm.value;
+    addPost(post: Post) {
+        this.postService.addPost(post);
+        console.log('Post: ' + post);
+    }
 
-    post.postTitle = submittedPost.postTitle;
-    post.postBody = submittedPost.postBody;
-    post.Author = 'Harrison';
-    post.Rank = 0;
-    post.Visible = submittedPost.Visible;
-    post.Domain = submittedPost.Domain;
-    post.Summary = submittedPost.postBody.substr(0, 98);
-    post.url = submittedPost.url;
-    post.Content = submittedPost.Content;
+    getAllDomains() {
+        this.domainService.getAllDomains().subscribe(data => this.domains = data);
+        console.log(this.domains);
+    }
 
-    console.log(submittedPost);
-    console.log(post);
+    submitPostForm() {
+        const post = new Post();
+        const submittedPost = this.addPostForm.value;
 
-    this.addPost(post);
-  }
+        post.postTitle = submittedPost.postTitle;
+        post.postBody = submittedPost.postBody;
+        post.Author = 'Harrison';
+        post.Rank = 0;
+        post.Visible = submittedPost.Visible;
+        post.Domain = submittedPost.Domain;
+        post.Summary = submittedPost.postBody.substr(0, 98);
+        post.Content = 'text';
+
+        console.log(submittedPost);
+        console.log(post);
+
+        this.addPost(post);
+    }
+
+    submitImageForm() {
+        const post = new Post();
+        const submittedPost = this.addImageForm.value;
+
+        post.postTitle = submittedPost.postTitle;
+        post.Author = 'Harrison';
+        post.Rank = 0;
+        post.Visible = submittedPost.Visible;
+        post.Domain = submittedPost.Domain;
+        post.url = submittedPost.url;
+
+        if (post.url.includes('.gifv')) {
+            post.Content = ('imgurGif');
+        }
+
+        console.log(submittedPost);
+        console.log(post);
+
+        this.addPost(post);
+    }
+
+    submitLinkForm() {
+        const post = new Post();
+        const submittedPost = this.addLinkForm.value;
+
+        post.postTitle = submittedPost.postTitle;
+        post.Author = 'Harrison';
+        post.Rank = 0;
+        post.Visible = submittedPost.Visible;
+        post.Domain = submittedPost.Domain;
+        post.Content = 'link';
+        post.url = submittedPost.url;
+
+        console.log(submittedPost);
+        console.log(post);
+
+        this.addPost(post);
+    }
+
+    changeContainer() {
+        this.globals.isFluid = this.globals.isFluid ? false : true;
+    }
+
+    changeMode() {
+        this.globals.isDark = this.globals.isDark ? false : true;
+        console.log(this.globals.isDark);
+    }
 
 }
