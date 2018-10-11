@@ -42,15 +42,16 @@
             </div>
             <div class="btn-block d-inline">
                 <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
-                <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
-                <a href="#" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+                <a ngxClipboard [cbContent]="link" class="p-0"><span class="badge badge-pill">share</span> </a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
             </div>
+            <app-crosspost [selectedPost]="post" *ngIf="selectedPost"></app-crosspost>
         </div>
     </div>
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters" *ngIf="!(post.Content!=='image')">
+    <div class="row post-row no-gutters" *ngIf="!(post.Content!=='image') || !(post.Content!=='imageCrossPost')">
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="8"
@@ -95,8 +96,9 @@
             <div class="btn-block d-inline">
                 <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
                 <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
-                <a href="#" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
             </div>
+            <app-crosspost [selectedPost]="selectedPost" *ngIf="selectedPost"></app-crosspost>
             <img *ngIf="beingPreviewed" src={{post.url}} class="img-fluid" style="max-width: 100%"/>
         </div>
     </div>

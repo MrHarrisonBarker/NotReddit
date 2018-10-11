@@ -19,6 +19,8 @@ export class PostComponent implements OnInit {
     voteStatus: String;
     hasVoteChanged: Boolean;
     beingPreviewed: Boolean;
+    link: String;
+    selectedPost: Post;
 
     constructor(private postService: PostService,
                 private domainService: DomainService,
@@ -29,6 +31,7 @@ export class PostComponent implements OnInit {
     ngOnInit() {
         console.log(this.post);
         this.getDomain(this.post.Domain);
+        this.link = '/post/' + this.post._id;
     }
 
     updateRank(post: Post, up: boolean) {
@@ -69,5 +72,9 @@ export class PostComponent implements OnInit {
     prevImage() {
         this.beingPreviewed = this.beingPreviewed ? false : true;
         console.log(this.beingPreviewed);
+    }
+
+    crossPost() {
+        this.selectedPost = this.post;
     }
 }

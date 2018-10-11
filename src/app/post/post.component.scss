@@ -1,9 +1,13 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+
+$colour-dark: rgb(51, 51, 51);
+$colour-light: rgb(252, 252, 252);
+
 .light .p-0 {
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
 }
 .dark .p-0 {
-  color: rgb(252, 252, 252);
+  color: $colour-light;
 }
 .dark a {
   color: rgb(135,206,250);
@@ -18,13 +22,13 @@
 .light .rank {
   font-size: small;
   text-align: center;
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
   // font-weight: bold;
 }
 .dark .rank {
   font-size: small;
   text-align: center;
-  color: rgb(252, 252, 252);
+  color: $colour-light;
   // font-weight: bold;
 }
 .post {
@@ -58,7 +62,7 @@
   background: no-repeat center center;
   margin: 2px auto 0px;
   outline: none;
-  fill: rgb(51, 51, 51);
+  fill: $colour-dark;
 }
 .dark .voteBtn {
   width: 15px;
@@ -69,7 +73,7 @@
   background: no-repeat center center;
   margin: 2px auto 0px;
   outline: none;
-  fill: rgb(252, 252, 252);
+  fill: $colour-light;
 }
 .light .voteBtn-Up:Hover {
   fill: #00FF7F;
@@ -113,6 +117,10 @@
   font-size: small;
 }
 .badge:hover {
+  background-color: #00FF7F;
+}
+.dark .badge:hover {
+  color: $colour-dark;
   background-color: #00FF7F;
 }
 .v-align {

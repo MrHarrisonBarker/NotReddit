@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Domain} from '../domain';
+import {GlobalsService} from '../globals.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,7 +11,7 @@ export class SidebarComponent implements OnInit {
 
   @Input() domain: Domain;
 
-  constructor() { }
+  constructor(public globals: GlobalsService) { }
 
   ngOnInit() {
   }

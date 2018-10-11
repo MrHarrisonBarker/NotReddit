@@ -1,12 +1,28 @@
+$colour-dark: rgb(51, 51, 51);
+$colour-light: rgb(252, 252, 252);
+
 .light .p-0 {
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
 }
 .dark .p-0 {
-  color: rgb(252, 252, 252);
+  color: $colour-light;
 }
 .dark a {
   color: rgb(135,206,250);
 }
 .badge:hover {
   background-color: #00FF7F;
+}
+.dark .badge:hover {
+  color: $colour-dark;
+  background-color: #00FF7F;
+}
+.postTitle {
+  font-size: large;
+}
+.sub-text {
+  font-size: small;
+}
+.sum-text {
+  font-size: medium;
 }

@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" [ngClass]="globals.isDark ? 'dark' : 'light'">
     <div class="p-0 h3">
         {{domain?.Title}}
     </div>
@@ -10,7 +10,7 @@
             subscribe
         </span>
     </a>
-    <div class="p-0">
+    <div class="p-0 sub-text">
         Content -> {{domain?.Content}}
     </div>
     <div class="p-0">

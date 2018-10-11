@@ -1,3 +1,6 @@
+$colour-dark: rgb(51, 51, 51);
+$colour-light: rgb(252, 252, 252);
+
 .ng-valid[required], .ng-valid.required {
   border-left: 5px solid #42A948; /* green */
 }
@@ -9,38 +12,38 @@ body{
   line-height: 0.5;
 }
 .dark {
-  background-color: rgb(51, 51, 51) ;
+  background-color: $colour-dark ;
 }
 .dark .page-link {
   color: rgb(255,255,255);
 }
 .dark .page-item.active .page-link{
-  background-color: rgb(252, 252, 252);
+  background-color: $colour-light;
   border-color: rgb(41, 41, 41);
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
 }
 .dark .page-link {
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
 }
 .dark .page-item .page-link{
-  background-color: rgb(51, 51, 51);
+  background-color: $colour-dark;
   border-color: rgb(41, 41, 41);
   color: rgb(255,255,255);
 }
 .light {
-  background-color: rgb(252, 252, 252);
+  background-color: $colour-light;
 }
 .light .page-link {
-  color: rgb(51, 51, 51);
+  color: $colour-dark;
 }
 .light .page-item.active .page-link{
-  background-color: rgb(51, 51, 51);
-  border-color: rgb(51, 51, 51);
-  color: rgb(252, 252, 252);
+  background-color: $colour-dark;
+  border-color: $colour-dark;
+  color: $colour-light;
 }
 .light .logo {
-  fill: rgb(51, 51, 51);
+  fill: $colour-dark;
 }
 .dark .logo {
-  fill: rgb(252, 252, 252);
+  fill: $colour-light;
 }

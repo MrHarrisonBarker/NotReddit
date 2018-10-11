@@ -21,6 +21,8 @@ import {DomainListComponent} from './domain-list/domain-list.component';
 import {StartComponent} from './start/start.component';
 import {NgPipesModule} from 'ngx-pipes';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {ClipboardModule} from 'ngx-clipboard';
+import { CrosspostComponent } from './crosspost/crosspost.component';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -39,7 +41,7 @@ class SentryErrorHandler implements ErrorHandler {
 
 
 @NgModule({
-    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent],
+    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -48,7 +50,8 @@ class SentryErrorHandler implements ErrorHandler {
         AngularFireAuthModule,
         FormsModule,
         ReactiveFormsModule,
-        NgPipesModule
+        NgPipesModule,
+        ClipboardModule
     ],
     providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService],
     bootstrap: [AppComponent]
