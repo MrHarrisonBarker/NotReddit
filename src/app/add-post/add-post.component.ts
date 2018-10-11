@@ -93,8 +93,11 @@ export class AddPostComponent implements OnInit {
         post.Rank = 0;
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
-        post.Content = 'image';
         post.url = submittedPost.url;
+
+        if (post.url.includes('.gifv')) {
+            post.Content = ('imgurGif');
+        }
 
         console.log(submittedPost);
         console.log(post);
