@@ -44,6 +44,7 @@ export class PostDetailComponent implements OnInit {
 
     removePost(post: Post) {
         this.postService.deletePost(post);
+        this.goBack();
         console.log(post);
     }
 

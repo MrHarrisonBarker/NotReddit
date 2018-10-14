@@ -30,13 +30,22 @@ export class DomainComponent implements OnInit {
 
             console.log(this.domain);
 
-            this.getPosts(domainName);
+            if (domainName === 'all') {
+                this.getAllPosts();
+            } else {
+                this.getPosts(domainName);
+            }
+
             console.log(this.posts);
         });
     }
 
     getPosts(domainName) {
         this.postService.getPostByDomain(domainName).subscribe(posts => this.posts = posts);
+    }
+
+    getAllPosts() {
+        this.postService.getAllPosts().subscribe( posts => this.posts = posts);
     }
 
     getDomain(domainName) {

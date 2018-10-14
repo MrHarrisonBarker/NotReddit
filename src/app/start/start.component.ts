@@ -20,9 +20,9 @@ export class StartComponent implements OnInit {
                 private domainService: DomainService,
                 private location: Location) {
         this.startForm = formBuilder.group({
-            'Title': ['', Validators.required],
-            'Name': ['', Validators.required],
-            'Topic': ['', Validators.required],
+            'Title': [''],
+            'Name': [''],
+            'Topic': [''],
             'Description': [''],
             'Colour': [''],
             'Content': [''],
@@ -31,8 +31,9 @@ export class StartComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.displayError = false;
         this.getAllDomains();
+        this.displayError = false;
+        console.log('init');
     }
 
     startDomain(domain: Domain) {
@@ -54,13 +55,19 @@ export class StartComponent implements OnInit {
 
         this.displayError = false;
 
+        console.log('helo');
+
         this.domains.forEach(publicDomain => {
             if (submittedDomain.Name === publicDomain.Name) {
                 console.log('error: name exists');
                 this.displayError = true;
-                // return error;
+                return;
+            } else {
+                console.log('Oak');
             }
         });
+
+        console.log('bye');
 
         domain.Title = submittedDomain.Title;
         domain.Name = submittedDomain.Name;
@@ -73,7 +80,12 @@ export class StartComponent implements OnInit {
         domain.Subscribers = 0;
 
         this.startDomain(domain);
-        this.goBack();
+
+        if (this.displayError) {
+            console.log('err');
+        } else {
+            this.goBack();
+        }
     }
 
 }
