@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+      <div class="p-0 h3">
+        Start Domain
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <form [formGroup]="startForm" (ngSubmit)="submitForm()" class="form-group">
         <div class="form-group">
           <input
@@ -81,6 +88,10 @@
 
         <button class="btn">
           Submit
+        </button>
+
+        <button (click)="goBack()" class="btn">
+          Back
         </button>
 
         <div *ngIf="displayError" >

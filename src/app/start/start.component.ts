@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
+import {Location} from '@angular/common';
 
 @Component({
     selector: 'app-start',
@@ -16,7 +17,8 @@ export class StartComponent implements OnInit {
     displayError: Boolean;
 
     constructor(private formBuilder: FormBuilder,
-                private domainService: DomainService) {
+                private domainService: DomainService,
+                private location: Location) {
         this.startForm = formBuilder.group({
             'Title': ['', Validators.required],
             'Name': ['', Validators.required],
@@ -38,6 +40,10 @@ export class StartComponent implements OnInit {
         console.log(domain);
     }
 
+    goBack(): void {
+        this.location.back();
+    }
+
     getAllDomains() {
         this.domainService.getAllDomains().subscribe(domains => this.domains = domains);
     }
@@ -46,11 +52,13 @@ export class StartComponent implements OnInit {
         const domain = new Domain();
         const submittedDomain = this.startForm.value;
 
+        this.displayError = false;
+
         this.domains.forEach(publicDomain => {
             if (submittedDomain.Name === publicDomain.Name) {
                 console.log('error: name exists');
                 this.displayError = true;
-                return error;
+                // return error;
             }
         });
 
@@ -65,6 +73,7 @@ export class StartComponent implements OnInit {
         domain.Subscribers = 0;
 
         this.startDomain(domain);
+        this.goBack();
     }
 
 }
