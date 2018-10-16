@@ -5,11 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class GlobalsService {
 
-  isDark: boolean;
-  isFluid: boolean;
+  isDark = false;
+  isFluid = true;
 
   constructor() {
-    this.isDark = false;
-    this.isFluid = true;
   }
 }

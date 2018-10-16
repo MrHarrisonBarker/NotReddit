@@ -23,6 +23,7 @@ import {NgPipesModule} from 'ngx-pipes';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {ClipboardModule} from 'ngx-clipboard';
 import { CrosspostComponent } from './crosspost/crosspost.component';
+import {GlobalsService} from './globals.service';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -53,7 +54,7 @@ class SentryErrorHandler implements ErrorHandler {
         NgPipesModule,
         ClipboardModule
     ],
-    providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService],
+    providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService, GlobalsService],
     bootstrap: [AppComponent]
 })
 

@@ -18,13 +18,13 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/domains">Domains</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="/add">Add</a>
                     </li>
                     <li class="nav-item">
@@ -99,12 +99,17 @@
                     </div>
 
                     <div class="form-group">
-                        <input
+                        <!--<input
                                 formControlName="Domain"
                                 placeholder="Domain"
                                 class="form-control"
                                 required
-                                type="text">
+                                type="text">-->
+                        <select multiple class="form-control" formControlName="Domain">
+                            <option *ngFor="let domain of domains">
+                                /{{domain?.Name}}
+                            </option>
+                        </select>
                     </div>
 
                     <button class="btn">
@@ -136,14 +141,11 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <input
-                                formControlName="Domain"
-                                placeholder="Domain"
-                                class="form-control"
-                                required
-                                type="text">
-                    </div>
+                    <select multiple class="form-control" formControlName="Domain">
+                        <option *ngFor="let domain of domains">
+                            /{{domain?.Name}}
+                        </option>
+                    </select>
 
                     <div class="form-group">
                         <input
@@ -183,14 +185,11 @@
                         </label>
                     </div>
 
-                    <div class="form-group">
-                        <input
-                                formControlName="Domain"
-                                placeholder="Domain"
-                                class="form-control"
-                                required
-                                type="text">
-                    </div>
+                    <select multiple class="form-control" formControlName="Domain">
+                        <option *ngFor="let domain of domains">
+                            /{{domain?.Name}}
+                        </option>
+                    </select>
 
                     <div class="form-group">
                         <input
@@ -206,6 +205,11 @@
                     </button>
 
                 </form>
+
+                <div class="p-0" style="color: green;" *ngIf="!(formState!=='success')">
+                    Success
+                </div>
+
             </div>
         </div>
     </div>

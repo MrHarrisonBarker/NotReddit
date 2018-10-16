@@ -8,20 +8,29 @@ import * as firebase from 'firebase';
 })
 export class AuthService {
 
-  private user: Observable<firebase.User>;
+  public user: Observable<firebase.User>;
+  private userDetails: firebase.User = null;
 
-  constructor(private _firebaseAuth: AngularFireAuth) {
-    this.user = _firebaseAuth.authState;
+  constructor(private fireBaseAuth: AngularFireAuth) {
+    this.user = fireBaseAuth.authState;
+
+    /*this.user.subscribe(user => {
+      if (user) {
+        this.userDetails = user;
+      } else {
+        this.userDetails = null;
+      }
+    });*/
   }
 
   signInWIthGoogle() {
-    return this._firebaseAuth.auth.signInWithPopup(
+    return this.fireBaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     );
   }
 
   signInWithGitHub() {
-    return this._firebaseAuth.auth.signInWithPopup(
+    return this.fireBaseAuth.auth.signInWithPopup(
       new firebase.auth.GithubAuthProvider()
     );
   }

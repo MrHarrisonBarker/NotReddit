@@ -7,7 +7,7 @@ import {UpdatePostComponent} from './update-post/update-post.component';
 import {DomainComponent} from './domain/domain.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
 import {DomainListComponent} from './domain-list/domain-list.component';
-import {StartComponent} from "./start/start.component";
+import {StartComponent} from './start/start.component';
 
 const routes: Routes = [
   {path: 'post/:_id', component: PostDetailComponent},

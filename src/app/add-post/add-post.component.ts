@@ -47,7 +47,7 @@ export class AddPostComponent implements OnInit {
 
     ngOnInit() {
         this.formState = 'post';
-        // this.getAllDomains();
+        this.getAllDomains();
     }
 
     setFormState(state) {
@@ -61,7 +61,9 @@ export class AddPostComponent implements OnInit {
     }
 
     getAllDomains() {
-        this.domainService.getAllDomains().subscribe(data => this.domains = data);
+        this.domainService.getAllDomains().subscribe(data => this.domains = data.filter(function(element, index, array) {
+            return (element.Name !== 'all');
+        }));
         console.log(this.domains);
     }
 
@@ -82,6 +84,8 @@ export class AddPostComponent implements OnInit {
         console.log(post);
 
         this.addPost(post);
+
+        this.formState = 'success';
     }
 
     submitImageForm() {
@@ -103,6 +107,8 @@ export class AddPostComponent implements OnInit {
         console.log(post);
 
         this.addPost(post);
+
+        this.formState = 'success';
     }
 
     submitLinkForm() {
@@ -121,6 +127,8 @@ export class AddPostComponent implements OnInit {
         console.log(post);
 
         this.addPost(post);
+
+        this.formState = 'success';
     }
 
     changeContainer() {

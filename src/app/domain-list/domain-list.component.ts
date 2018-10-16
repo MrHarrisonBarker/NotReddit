@@ -33,4 +33,29 @@ export class DomainListComponent implements OnInit {
         console.log(this.globals.isDark);
     }
 
+    orderDomains(property, isAscending) {
+        this.domains.sort(function (a, b) {
+            const A = a[property];
+            const B = b[property];
+
+            let comparison = 0;
+            if (isAscending) {
+                if (A > B) {
+                    comparison = 1;
+                } else if (A < B) {
+                    comparison = -1;
+                }
+                return comparison;
+            } else {
+                if (A < B) {
+                    comparison = 1;
+                } else if (A > B) {
+                    comparison = -1;
+                }
+                return comparison;
+            }
+
+        });
+    }
+
 }

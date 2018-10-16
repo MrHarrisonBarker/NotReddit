@@ -9,7 +9,8 @@ import {GlobalsService} from '../globals.service';
 @Component({
     selector: 'app-domain',
     templateUrl: './domain.component.html',
-    styleUrls: ['./domain.component.scss']
+    styleUrls: ['./domain.component.scss'],
+    providers: [GlobalsService]
 })
 export class DomainComponent implements OnInit {
 

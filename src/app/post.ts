@@ -1,5 +1,6 @@
 import {Comment} from './comment';
 import {Cross} from './cross';
+import {User} from './user';
 
 export class Post {
     _id: String;
@@ -15,4 +16,5 @@ export class Post {
     url: String;
     Content: String;
     CrossPost: Cross;
+    User: User;
 }

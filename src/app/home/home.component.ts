@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {Post} from '../post';
 import {GlobalsService} from '../globals.service';
+import {AuthService} from '../auth.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import * as firebase from 'firebase';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,12 +18,16 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private postService: PostService,
-              public globals: GlobalsService) {
+              public globals: GlobalsService,
+              public authService: AuthService) {
   }
 
   ngOnInit() {
     this.getAllPosts();
     // this.orderPosts('postTitle', true);
+      this.authService.user.subscribe(data => {
+        console.log(data);
+      });
   }
 
   getAllPosts() {
