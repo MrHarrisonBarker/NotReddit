@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
 import {GlobalsService} from '../globals.service';
+import {AuthService} from '../auth.service';
 
 @Component({
     selector: 'app-add-post',
@@ -20,11 +21,13 @@ export class AddPostComponent implements OnInit {
     formState: String;
 
     domains: Domain[];
+    user;
 
     constructor(private postService: PostService,
                 private formBuilder: FormBuilder,
                 private domainService: DomainService,
-                public globals: GlobalsService) {
+                public globals: GlobalsService,
+                private authService: AuthService) {
         this.addPostForm = formBuilder.group({
             'postTitle': ['', Validators.required],
             'postBody': [''],
@@ -48,6 +51,7 @@ export class AddPostComponent implements OnInit {
     ngOnInit() {
         this.formState = 'post';
         this.getAllDomains();
+        this.getUser();
     }
 
     setFormState(state) {
@@ -67,18 +71,23 @@ export class AddPostComponent implements OnInit {
         console.log(this.domains);
     }
 
+    getUser() {
+        this.authService.user.subscribe(data => this.user = data);
+    }
+
     submitPostForm() {
         const post = new Post();
         const submittedPost = this.addPostForm.value;
 
         post.postTitle = submittedPost.postTitle;
         post.postBody = submittedPost.postBody;
-        post.Author = 'Harrison';
         post.Rank = 0;
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
         post.Summary = submittedPost.postBody.substr(0, 98);
         post.Content = 'text';
+
+        post.Author = this.user.displayName;
 
         console.log(submittedPost);
         console.log(post);
@@ -93,7 +102,6 @@ export class AddPostComponent implements OnInit {
         const submittedPost = this.addImageForm.value;
 
         post.postTitle = submittedPost.postTitle;
-        post.Author = 'Harrison';
         post.Rank = 0;
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
@@ -102,6 +110,8 @@ export class AddPostComponent implements OnInit {
         if (post.url.includes('.gifv')) {
             post.Content = ('imgurGif');
         }
+
+        post.Author = this.user.displayName;
 
         console.log(submittedPost);
         console.log(post);
@@ -125,6 +135,8 @@ export class AddPostComponent implements OnInit {
 
         console.log(submittedPost);
         console.log(post);
+
+        post.Author = this.user.displayName;
 
         this.addPost(post);
 

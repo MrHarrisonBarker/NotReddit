@@ -106,7 +106,7 @@
                                 required
                                 type="text">-->
                         <select multiple class="form-control" formControlName="Domain">
-                            <option *ngFor="let domain of domains">
+                            <option *ngFor="let domain of domains" value="{{domain?.Name}}">
                                 /{{domain?.Name}}
                             </option>
                         </select>
