@@ -30,15 +30,15 @@ export class AddPostComponent implements OnInit {
                 private authService: AuthService) {
         this.addPostForm = formBuilder.group({
             'postTitle': ['', Validators.required],
-            'postBody': [''],
-            'Visible': [''],
-            'Domain': ['']
+            'postBody': ['', Validators.required],
+            'Visible': ['', Validators.required],
+            'Domain': ['', Validators.required]
         });
         this.addImageForm = formBuilder.group({
             'postTitle': ['', Validators.required],
-            'Visible': [''],
-            'Domain': [''],
-            'url': ['']
+            'Visible': ['', Validators.required],
+            'Domain': ['', Validators.required],
+            'url': ['', Validators.required]
         });
         this.addLinkForm = formBuilder.group({
             'postTitle': ['', Validators.required],
@@ -76,6 +76,11 @@ export class AddPostComponent implements OnInit {
     }
 
     submitPostForm() {
+
+        if (this.addPostForm.dirty && this.addPostForm.valid) {
+            alert('Error');
+        }
+
         const post = new Post();
         const submittedPost = this.addPostForm.value;
 
@@ -98,6 +103,11 @@ export class AddPostComponent implements OnInit {
     }
 
     submitImageForm() {
+
+        if (this.addImageForm.dirty && this.addImageForm.valid) {
+            alert('Error');
+        }
+
         const post = new Post();
         const submittedPost = this.addImageForm.value;
 
@@ -106,10 +116,7 @@ export class AddPostComponent implements OnInit {
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
         post.url = submittedPost.url;
-
-        if (post.url.includes('.gifv')) {
-            post.Content = ('imgurGif');
-        }
+        post.Content = 'image';
 
         post.Author = this.user.displayName;
 
@@ -122,11 +129,15 @@ export class AddPostComponent implements OnInit {
     }
 
     submitLinkForm() {
+
+        if (this.addLinkForm.dirty && this.addLinkForm.valid) {
+            alert('Error');
+        }
+
         const post = new Post();
         const submittedPost = this.addLinkForm.value;
 
         post.postTitle = submittedPost.postTitle;
-        post.Author = 'Harrison';
         post.Rank = 0;
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;

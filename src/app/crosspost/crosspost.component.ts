@@ -4,20 +4,24 @@ import {GlobalsService} from '../globals.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../post.service';
 import {Cross} from '../cross';
+import {AuthService} from '../auth.service';
 
 @Component({
     selector: 'app-crosspost',
     templateUrl: './crosspost.component.html',
-    styleUrls: ['./crosspost.component.css']
+    styleUrls: ['./crosspost.component.scss']
 })
 export class CrosspostComponent implements OnInit {
 
     @Input() selectedPost: Post;
     addCrossPostForm: FormGroup;
 
+    user;
+
     constructor(public globals: GlobalsService,
                 private formBuilder: FormBuilder,
-                private postService: PostService) {
+                private postService: PostService,
+                private authService: AuthService) {
         this.addCrossPostForm = formBuilder.group({
             'postTitle': [''],
             'Visible': [''],
@@ -27,11 +31,16 @@ export class CrosspostComponent implements OnInit {
 
     ngOnInit() {
         console.log(this.selectedPost);
+        this.getUser();
     }
 
     addPost(post: Post) {
         this.postService.addPost(post);
         console.log('Post: ' + post);
+    }
+
+    getUser() {
+        this.authService.user.subscribe(data => this.user = data);
     }
 
     submitCrossPostForm() {
@@ -54,7 +63,7 @@ export class CrosspostComponent implements OnInit {
         post.Content = (this.selectedPost.Content + 'CrossPost');
         post.Rank = 0;
         post.Domain = submittedPost.Domain;
-        post.Author = 'Harrison';
+        post.Author = this.user.displayName;
         post.Visible = submittedPost.Visible;
 
         crossPost.isCrossPost = true;

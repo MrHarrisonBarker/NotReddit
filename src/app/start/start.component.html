@@ -1,104 +1,110 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="p-0 h3">
-        Start Domain
-      </div>
+<div [ngClass]="globals.isDark ? 'dark' : 'light'">
+    <div [ngClass]="globals.isFluid ? 'container-fluid' : 'container'">
+        <app-nav></app-nav>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <form [formGroup]="startForm" (ngSubmit)="submitForm()" class="form-group">
-        <div class="form-group">
-          <input
-            formControlName="Name"
-            placeholder="Name"
-            class="form-control"
-            type="text"
-            required>
-        </div>
 
-        <div class="form-group">
-          <input
-            formControlName="Title"
-            placeholder="Title"
-            class="form-control"
-            type="text"
-            required>
+    <div [ngClass]="globals.isFluid ? 'container-fluid' : 'container'">
+        <div class="row">
+            <div class="col-12">
+                <div class="p-0 h3">
+                    Start Domain
+                </div>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="startForm" (ngSubmit)="submitForm()" class="form-group">
+                    <div class="form-group">
+                        <input
+                                formControlName="Name"
+                                placeholder="Name"
+                                class="form-control"
+                                type="text"
+                                required>
+                    </div>
 
-        <div class="form-group">
-          <input
-            formControlName="Topic"
-            placeholder="Topic"
-            class="form-control"
-            type="text"
-            required>
-        </div>
+                    <div class="form-group">
+                        <input
+                                formControlName="Title"
+                                placeholder="Title"
+                                class="form-control"
+                                type="text"
+                                required>
+                    </div>
 
-        <div class="form-group">
+                    <div class="form-group">
+                        <input
+                                formControlName="Topic"
+                                placeholder="Topic"
+                                class="form-control"
+                                type="text"
+                                required>
+                    </div>
+
+                    <div class="form-group">
           <textarea
-            formControlName="Description"
-            placeholder="Description"
-            class="form-control"
-            rows="10"></textarea>
+                  formControlName="Description"
+                  placeholder="Description"
+                  class="form-control"
+                  rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <input
+                                formControlName="Colour"
+                                placeholder="#FFFFFF"
+                                class="form-control"
+                                required
+                                type="text">
+                    </div>
+
+                    <div class="form-group">
+                        <select formControlName="Content" class="custom-select form-control">
+                            <option *ngFor="let type of contentTypes">{{type}}</option>
+                        </select>
+                    </div>
+
+                    <!--<div class="form-group">
+                      <input
+                        formControlName="Content"
+                        placeholder="Content"
+                        class="form-control"
+                        required
+                        type="text">
+                    </div>-->
+
+                    <div class="form-group">
+                        <input
+                                formControlName="Icon"
+                                placeholder="Icon url"
+                                class="form-control"
+                                required
+                                type="text">
+                    </div>
+
+                    <!--<div class="form-group">
+                      <input
+                        formControlName="Links"
+                        placeholder="Links"
+                        class="form-control"
+                        required
+                        type="text">
+                    </div>-->
+
+                    <button class="btn btn-light">
+                        Submit
+                    </button>
+
+                    <button (click)="goBack()" class="btn btn-light" type="button">
+                        Back
+                    </button>
+
+                    <div *ngIf="displayError">
+                        <div class="p-0">Error</div>
+                    </div>
+
+                </form>
+            </div>
         </div>
-
-        <div class="form-group">
-          <input
-            formControlName="Colour"
-            placeholder="#FFFFFF"
-            class="form-control"
-            required
-            type="text">
-        </div>
-
-        <div class="form-group">
-          <select formControlName="Content" class="custom-select form-control" >
-            <option *ngFor="let type of contentTypes" >{{type}}</option>
-          </select>
-        </div>
-
-        <!--<div class="form-group">
-          <input
-            formControlName="Content"
-            placeholder="Content"
-            class="form-control"
-            required
-            type="text">
-        </div>-->
-
-        <div class="form-group">
-          <input
-            formControlName="Icon"
-            placeholder="Icon url"
-            class="form-control"
-            required
-            type="text">
-        </div>
-
-        <!--<div class="form-group">
-          <input
-            formControlName="Links"
-            placeholder="Links"
-            class="form-control"
-            required
-            type="text">
-        </div>-->
-
-        <button class="btn btn-light">
-          Submit
-        </button>
-
-        <button (click)="goBack()" class="btn btn-light" type="button">
-          Back
-        </button>
-
-        <div *ngIf="displayError" >
-          <div class="p-0">Error</div>
-        </div>
-
-      </form>
     </div>
-  </div>
 </div>

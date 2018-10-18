@@ -1,5 +1,5 @@
 <div [ngClass]="globals.isDark ? 'dark' : 'light'">
-    <div class="row no-gutters post-row" *ngIf="!(post.Content=='image')">
+    <div class="row no-gutters post-row" *ngIf="!(post.Content!=='text') || !(post.Content!=='textCrossPost')">
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <div class="v-align">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -74,6 +74,8 @@
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="img-block mx-auto">
                 <img src="{{post.url}}" class="img-fluid post-img">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Imgur_icon.svg/2000px-Imgur_icon.svg.png" class="img-fluid post-img" *ngIf="post.url.includes('imgur')">
+                <img src="https://thumbs.gfycat.com/RequiredAjarArachnid-mobile.jpg" class="img-fluid post-img" *ngIf="post.url.includes('gfycat')">
             </div>
         </div>
         <div class="col">
@@ -100,6 +102,60 @@
             </div>
             <app-crosspost [selectedPost]="selectedPost" *ngIf="selectedPost"></app-crosspost>
             <img *ngIf="beingPreviewed" src={{post.url}} class="img-fluid" style="max-width: 100%"/>
+        </div>
+    </div>
+
+    <!-- ############################################################################# -->
+
+    <div class="row post-row no-gutters" *ngIf="!(post.Content!=='link') || !(post.Content!=='linkCrossPost')">
+        <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="8"
+                 height="8"
+                 viewBox="0 0 8 8"
+                 class="voteBtn voteBtn-Up"
+                 (click)="updateRank(post,true)">
+                <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
+            </svg>
+            <div class="rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</div>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="8"
+                 height="8"
+                 viewBox="0 0 8 8"
+                 class="voteBtn voteBtn-Down"
+                 (click)="updateRank(post,false)">
+                <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
+            </svg>
+        </div>
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+            <div class="img-block mx-auto">
+                <a href="{{post.url}}">
+                    <img src="https://image.flaticon.com/icons/svg/34/34735.svg" class="img-fluid post-img">
+                </a>
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-0">
+                <a class="postTitle" routerLink="/post/{{post._id}}">
+                    {{ post.postTitle }}
+                </a>
+            </div>
+            <div class="p-0 sub-text">
+                <em>
+                    Uploaded to ->
+                    <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
+                        {{ domain?.Name }}
+                    </a>
+                    <img src={{domain?.Icon}} width="20px" height="20px">
+                </em>
+                -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
+            </div>
+            <div class="btn-block d-inline">
+                <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+                <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+            </div>
+            <app-crosspost [selectedPost]="selectedPost" *ngIf="selectedPost"></app-crosspost>
         </div>
     </div>
 </div>

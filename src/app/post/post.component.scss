@@ -1,35 +1,17 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../styles/dark";
+@import "../styles/light";
+@import "../styles/main";
 
 $colour-dark: rgb(51, 51, 51);
 $colour-light: rgb(252, 252, 252);
 
-.light .p-0 {
-  color: $colour-dark;
-}
-.dark .p-0 {
-  color: $colour-light;
-}
-.dark a {
-  color: rgb(135,206,250);
-}
 @mixin vertical-align {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-.light .rank {
-  font-size: small;
-  text-align: center;
-  color: $colour-dark;
-  // font-weight: bold;
-}
-.dark .rank {
-  font-size: small;
-  text-align: center;
-  color: $colour-light;
-  // font-weight: bold;
 }
 .post {
   // border: solid black;
@@ -39,7 +21,6 @@ $colour-light: rgb(252, 252, 252);
   // border: solid red;
   //max-height: 100%;
 }
-
 .img-block {
   // border: solid blue;
   max-width: 100%;
@@ -53,75 +34,13 @@ $colour-light: rgb(252, 252, 252);
   margin-left: 15px;
   margin-right: 15px;
 }
-.light .voteBtn {
-  width: 15px;
-  height: 15px;
-  width: 100%;
-  display: block;
-  cursor: pointer;
-  background: no-repeat center center;
-  margin: 2px auto 0px;
-  outline: none;
-  fill: $colour-dark;
-}
-.dark .voteBtn {
-  width: 15px;
-  height: 15px;
-  width: 100%;
-  display: block;
-  cursor: pointer;
-  background: no-repeat center center;
-  margin: 2px auto 0px;
-  outline: none;
-  fill: $colour-light;
-}
-.light .voteBtn-Up:Hover {
-  fill: #00FF7F;
-}
-.light .voteBtn-Down:Hover {
-  fill: #FF0000;
-}
-.dark .voteBtn-Up:Hover {
-  fill: #00FF7F;
-}
-.dark .voteBtn-Down:Hover {
-  fill: #FF0000;
-}
-
-.post-row {
-  margin-bottom: 10px;
-  // border: solid green;
-}
-.light .post-row:hover {
-  background-color: rgb(246, 246, 246);
-}
-.dark .post-row:hover {
-  background-color: rgb(41, 41, 41);
-}
 .img-prev {
   // max-width: 140px;
    max-width: 70px;
    max-height: 70px;
 }
-.postTitle {
-  font-size: large;
-}
-
-.sub-text {
-  font-size: small;
-}
-.sum-text {
-  font-size: medium;
-}
 .btn-block {
   font-size: small;
-}
-.badge:hover {
-  background-color: #00FF7F;
-}
-.dark .badge:hover {
-  color: $colour-dark;
-  background-color: #00FF7F;
 }
 .v-align {
   @include vertical-align();

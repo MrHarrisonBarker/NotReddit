@@ -1,18 +1,36 @@
-import {Comment} from './comment';
-import {Cross} from './cross';
-
 export class Post {
     _id: String;
     postTitle: String;
     postBody: String;
-    Author: String;
+    Author: {
+        DisplayName: String;
+    };
     Rank: number;
     Visible: Boolean;
     Domain: String;
     Summary: String;
-    Comments: Comment[];
-    createdOn: Date;
     url: String;
-    Content: String;
-    CrossPost: Cross;
+    createdOn: Date;
+    Tags: String[];
+    Reports: number;
+    isNSFW: boolean;
+    viewCount: number;
+    isRemoved: boolean;
+    Comments: [{
+        id: String;
+        Body: String;
+        createdOn: Date;
+        Author: {
+            DisplayName: String;
+        };
+    }];
+    ContentType: {
+        Name: String;
+        Source: String;
+    };
+    CrossPost: {
+        isCrossPost: Boolean;
+        user: String;
+        post: String;
+    };
 }

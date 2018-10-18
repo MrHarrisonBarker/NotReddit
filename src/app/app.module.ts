@@ -24,6 +24,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {ClipboardModule} from 'ngx-clipboard';
 import { CrosspostComponent } from './crosspost/crosspost.component';
 import {GlobalsService} from './globals.service';
+import { NavComponent } from './nav/nav.component';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -42,7 +43,7 @@ class SentryErrorHandler implements ErrorHandler {
 
 
 @NgModule({
-    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent],
+    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent, NavComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
 import {Location} from '@angular/common';
+import {GlobalsService} from '../globals.service';
 
 @Component({
     selector: 'app-start',
@@ -18,7 +19,8 @@ export class StartComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private domainService: DomainService,
-                private location: Location) {
+                private location: Location,
+                public globals: GlobalsService) {
         this.startForm = formBuilder.group({
             'Title': [''],
             'Name': [''],

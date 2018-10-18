@@ -1,43 +1,11 @@
+@import "../styles/dark";
+@import "../styles/light";
+@import "../styles/main";
+
 $colour-dark: rgb(51, 51, 51);
 $colour-light: rgb(252, 252, 252);
 
 body{
   line-height: 0.5;
-}
-.dark {
-  background-color: $colour-dark ;
-}
-.dark .page-link {
-  color: $colour-light;
-}
-.dark .page-item.active .page-link{
-  background-color: $colour-light;
-  border-color: rgb(41, 41, 41);
-  color: $colour-dark;
-}
-.dark .page-link {
-  color: $colour-dark;
-}
-.dark .page-item .page-link{
-  background-color: $colour-dark;
-  border-color: rgb(41, 41, 41);
-  color: $colour-light;
-}
-.light {
-  background-color: $colour-light;
-}
-.light .page-link {
-  color: $colour-dark;
-}
-.light .page-item.active .page-link{
-  background-color: $colour-dark;
-  border-color: $colour-dark;
-  color: $colour-light;
-}
-.light .logo {
-  fill: $colour-dark;
-}
-.dark .logo {
-  fill: $colour-light;
 }
 
