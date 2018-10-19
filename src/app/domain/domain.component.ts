@@ -27,17 +27,21 @@ export class DomainComponent implements OnInit {
         this.route.params.subscribe(params => {
             const domainName = params['domain'];
 
+            console.log(domainName);
+
             this.getDomain(domainName);
 
             console.log(this.domain);
 
             if (domainName === 'all') {
+                console.log('thi is all');
                 this.getAllPosts();
             } else {
                 this.getPosts(domainName);
             }
 
             console.log(this.posts);
+            console.log('bye');
         });
     }
 
@@ -46,7 +50,10 @@ export class DomainComponent implements OnInit {
     }
 
     getAllPosts() {
-        this.postService.getAllPosts().subscribe( posts => this.posts = posts);
+        this.postService.getAllPosts().subscribe( posts => {
+            console.log(posts);
+            this.posts = posts;
+        });
     }
 
     getDomain(domainName) {

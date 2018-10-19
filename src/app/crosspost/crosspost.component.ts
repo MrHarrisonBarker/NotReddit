@@ -3,7 +3,6 @@ import {Post} from '../post';
 import {GlobalsService} from '../globals.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../post.service';
-import {Cross} from '../cross';
 import {AuthService} from '../auth.service';
 
 @Component({
@@ -46,32 +45,29 @@ export class CrosspostComponent implements OnInit {
     submitCrossPostForm() {
         const post = new Post();
         const submittedPost = this.addCrossPostForm.value;
-        const crossPost = new Cross();
 
         console.log(submittedPost);
         console.log(this.selectedPost);
 
         post.postTitle = submittedPost.postTitle;
 
-        if (this.selectedPost.Content === 'text') {
+        if (this.selectedPost.ContentType.Name === 'text') {
             post.postBody = this.selectedPost.postBody;
             post.Summary = this.selectedPost.Summary;
         } else {
             post.url = this.selectedPost.url;
         }
 
-        post.Content = (this.selectedPost.Content + 'CrossPost');
+        post.ContentType.Name = (this.selectedPost.ContentType.Name + 'CrossPost');
         post.Rank = 0;
         post.Domain = submittedPost.Domain;
         post.Author = this.user.displayName;
         post.Visible = submittedPost.Visible;
 
-        crossPost.isCrossPost = true;
-        crossPost.post = this.selectedPost._id;
+        post.CrossPost.isCrossPost = true;
+        post.CrossPost.post = this.selectedPost._id;
         console.log('hello');
-        crossPost.user = 'Harrison2';
-
-        post.CrossPost = crossPost;
+        post.CrossPost.user = 'Harrison2';
 
         this.addPost(post);
 

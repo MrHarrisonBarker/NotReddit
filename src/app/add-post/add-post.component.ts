@@ -31,20 +31,20 @@ export class AddPostComponent implements OnInit {
         this.addPostForm = formBuilder.group({
             'postTitle': ['', Validators.required],
             'postBody': ['', Validators.required],
-            'Visible': ['', Validators.required],
+            'Visible': [''],
             'Domain': ['', Validators.required]
         });
         this.addImageForm = formBuilder.group({
             'postTitle': ['', Validators.required],
-            'Visible': ['', Validators.required],
+            'Visible': [''],
             'Domain': ['', Validators.required],
             'url': ['', Validators.required]
         });
         this.addLinkForm = formBuilder.group({
             'postTitle': ['', Validators.required],
             'Visible': [''],
-            'Domain': [''],
-            'url': ['']
+            'Domain': ['', Validators.required],
+            'url': ['', Validators.required]
         });
     }
 
@@ -77,9 +77,9 @@ export class AddPostComponent implements OnInit {
 
     submitPostForm() {
 
-        if (this.addPostForm.dirty && this.addPostForm.valid) {
-            alert('Error');
-        }
+        //if (this.addPostForm.dirty && this.addPostForm.valid) {
+        //    alert('Error');
+        //}
 
         const post = new Post();
         const submittedPost = this.addPostForm.value;
@@ -90,7 +90,7 @@ export class AddPostComponent implements OnInit {
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
         post.Summary = submittedPost.postBody.substr(0, 98);
-        post.Content = 'text';
+        post.ContentType.Name = 'text';
 
         post.Author = this.user.displayName;
 
@@ -104,9 +104,9 @@ export class AddPostComponent implements OnInit {
 
     submitImageForm() {
 
-        if (this.addImageForm.dirty && this.addImageForm.valid) {
-            alert('Error');
-        }
+        //if (this.addImageForm.dirty && this.addImageForm.valid) {
+        //    alert('Error');
+        //}
 
         const post = new Post();
         const submittedPost = this.addImageForm.value;
@@ -116,7 +116,7 @@ export class AddPostComponent implements OnInit {
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
         post.url = submittedPost.url;
-        post.Content = 'image';
+        post.ContentType.Name = 'image';
 
         post.Author = this.user.displayName;
 
@@ -141,7 +141,7 @@ export class AddPostComponent implements OnInit {
         post.Rank = 0;
         post.Visible = submittedPost.Visible;
         post.Domain = submittedPost.Domain;
-        post.Content = 'link';
+        post.ContentType.Name = 'link';
         post.url = submittedPost.url;
 
         console.log(submittedPost);

@@ -38,7 +38,7 @@
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
+                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
                 <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
@@ -92,7 +92,7 @@
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
+                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
             </div>
             <img src="../../assets/picture.svg" width="20px" (click)="prevImage()" style="margin-right: 5px">
             <div class="btn-block d-inline">
@@ -148,7 +148,7 @@
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.Content }} By -> {{ post.Author }}
+                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
                 <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
