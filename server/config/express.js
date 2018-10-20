@@ -17,10 +17,10 @@ if (config.env === 'development') {
     app.use(logger('dev'));
 }
 
-app.use(express.static(path.join(__dirname, distDir)))
-app.use(/^((?!(api)).)*/, (req, res) => {
-    res.sendFile(path.join(__dirname, distDir + '/index.html'));
-});
+// app.use(express.static(path.join(__dirname, distDir)))
+// app.use(/^((?!(api)).)*/, (req, res) => {
+//     res.sendFile(path.join(__dirname, distDir + '/index.html'));
+// });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

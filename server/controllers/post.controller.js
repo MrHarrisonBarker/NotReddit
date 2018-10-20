@@ -1,11 +1,17 @@
-const Post = require("../models/post.model.js");
+const Post = require("../models/post.model");
 
-exports.listAllPosts = (req, res) => {
+module.exports = {
+    listAllPosts
+};
+
+function listAllPosts(req, res) {
     Post.find({}, (err, post) => {
       if (err) {
         res.status(500).send(err);
       }
+      console.log('hello');
       res.status(200).json(post);
+      console.log('bye');
     });
   };
 
