@@ -20,11 +20,13 @@ import {PostDetailComponent} from './post-detail/post-detail.component';
 import {DomainListComponent} from './domain-list/domain-list.component';
 import {StartComponent} from './start/start.component';
 import {NgPipesModule} from 'ngx-pipes';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import {SidebarComponent} from './sidebar/sidebar.component';
 import {ClipboardModule} from 'ngx-clipboard';
-import { CrosspostComponent } from './crosspost/crosspost.component';
+import {CrosspostComponent} from './crosspost/crosspost.component';
 import {GlobalsService} from './globals.service';
-import { NavComponent } from './nav/nav.component';
+import {NavComponent} from './nav/nav.component';
+import {TagInputModule} from 'ngx-chips';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -46,6 +48,7 @@ class SentryErrorHandler implements ErrorHandler {
     declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent, NavComponent],
     imports: [
         BrowserModule,
+        TagInputModule,
         AppRoutingModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
@@ -53,7 +56,8 @@ class SentryErrorHandler implements ErrorHandler {
         FormsModule,
         ReactiveFormsModule,
         NgPipesModule,
-        ClipboardModule
+        ClipboardModule,
+        BrowserAnimationsModule
     ],
     providers: [{provide: ErrorHandler, useClass: SentryErrorHandler}, AuthService, GlobalsService],
     bootstrap: [AppComponent]
