@@ -29,20 +29,26 @@ export class AddPostComponent implements OnInit {
                 public globals: GlobalsService,
                 private authService: AuthService) {
         this.addPostForm = formBuilder.group({
-            'postTitle': ['', Validators.required],
-            'postBody': ['', Validators.required],
+            'postTitle': ['', Validators.required, Validators.minLength(5), Validators.maxLength(140)],
+            'postBody': ['', Validators.required, Validators.maxLength(134217727)],
             'Visible': [''],
+            'isNSFW': [''],
+            'Tags': [''],
             'Domain': ['', Validators.required]
         });
         this.addImageForm = formBuilder.group({
             'postTitle': ['', Validators.required],
             'Visible': [''],
+            'isNSFW': [''],
+            'Tags': [''],
             'Domain': ['', Validators.required],
             'url': ['', Validators.required]
         });
         this.addLinkForm = formBuilder.group({
             'postTitle': ['', Validators.required],
             'Visible': [''],
+            'isNSFW': [''],
+            'Tags': [''],
             'Domain': ['', Validators.required],
             'url': ['', Validators.required]
         });
@@ -65,10 +71,12 @@ export class AddPostComponent implements OnInit {
     }
 
     getAllDomains() {
-        this.domainService.getAllDomains().subscribe(data => this.domains = data.filter(function(element, index, array) {
-            return (element.Name !== 'all');
-        }));
-        console.log(this.domains);
+        this.domainService.getAllDomains().subscribe(data => {
+            this.domains = data.filter(function(element, index, array) {
+                return (element.Name !== 'all');
+            });
+            console.log(data);
+        });
     }
 
     getUser() {
@@ -77,22 +85,41 @@ export class AddPostComponent implements OnInit {
 
     submitPostForm() {
 
-        //if (this.addPostForm.dirty && this.addPostForm.valid) {
-        //    alert('Error');
-        //}
-
         const post = new Post();
         const submittedPost = this.addPostForm.value;
+        const Tags = new Array<String>();
+
+        console.log(submittedPost.Tags);
+
+        /*if (this.addPostForm.dirty && this.addPostForm.valid) {
+            alert('Error');
+        }*/
 
         post.postTitle = submittedPost.postTitle;
         post.postBody = submittedPost.postBody;
+        post.Author = this.user.displayName;
         post.Rank = 0;
-        post.Visible = submittedPost.Visible;
+        if (submittedPost.Visible === null || submittedPost.Visible === undefined) {
+            post.Visible = false;
+        } else {
+            post.Visible = true;
+        }
         post.Domain = submittedPost.Domain;
         post.Summary = submittedPost.postBody.substr(0, 98);
-        post.ContentType.Name = 'text';
-
-        post.Author = this.user.displayName;
+        submittedPost.Tags.forEach(tag => {
+           console.log(tag.value);
+           Tags.push(tag.value);
+        });
+        post.Tags = Tags;
+        post.Reports = 0;
+        if (submittedPost.isNSFW === null || submittedPost.isNSFW === undefined) {
+            post.isNSFW = false;
+        } else {
+            post.isNSFW = true;
+        }
+        post.viewCount = 0;
+        post.isRemoved = false;
+        post.ContentType = {Name: 'text', Source: 'none'};
 
         console.log(submittedPost);
         console.log(post);
@@ -104,21 +131,38 @@ export class AddPostComponent implements OnInit {
 
     submitImageForm() {
 
-        //if (this.addImageForm.dirty && this.addImageForm.valid) {
-        //    alert('Error');
-        //}
-
         const post = new Post();
         const submittedPost = this.addImageForm.value;
+        const Tags = new Array<String>();
+
+        /*if (this.addImageForm.dirty && this.addImageForm.valid) {
+            alert('Error');
+        }*/
 
         post.postTitle = submittedPost.postTitle;
-        post.Rank = 0;
-        post.Visible = submittedPost.Visible;
-        post.Domain = submittedPost.Domain;
-        post.url = submittedPost.url;
-        post.ContentType.Name = 'image';
-
         post.Author = this.user.displayName;
+        post.Rank = 0;
+        if (submittedPost.Visible === null || submittedPost.Visible === undefined) {
+            post.Visible = false;
+        } else {
+            post.Visible = true;
+        }
+        post.Domain = submittedPost.Domain;
+        submittedPost.Tags.forEach(tag => {
+            console.log(tag.value);
+            Tags.push(tag.value);
+        });
+        post.Tags = Tags;
+        post.Reports = 0;
+        if (submittedPost.isNSFW === null || submittedPost.isNSFW === undefined) {
+            post.isNSFW = false;
+        } else {
+            post.isNSFW = true;
+        }
+        post.url = submittedPost.url;
+        post.viewCount = 0;
+        post.isRemoved = false;
+        post.ContentType = {Name: 'image', Source: 'none'};
 
         console.log(submittedPost);
         console.log(post);
@@ -130,24 +174,41 @@ export class AddPostComponent implements OnInit {
 
     submitLinkForm() {
 
-        if (this.addLinkForm.dirty && this.addLinkForm.valid) {
-            alert('Error');
-        }
-
         const post = new Post();
         const submittedPost = this.addLinkForm.value;
+        const Tags = new Array<String>();
+
+        /*if (this.addImageForm.dirty && this.addImageForm.valid) {
+            alert('Error');
+        }*/
 
         post.postTitle = submittedPost.postTitle;
+        post.Author = this.user.displayName;
         post.Rank = 0;
-        post.Visible = submittedPost.Visible;
+        if (submittedPost.Visible === null || submittedPost.Visible === undefined) {
+            post.Visible = false;
+        } else {
+            post.Visible = true;
+        }
         post.Domain = submittedPost.Domain;
-        post.ContentType.Name = 'link';
+        submittedPost.Tags.forEach(tag => {
+            console.log(tag.value);
+            Tags.push(tag.value);
+        });
+        post.Tags = Tags;
+        post.Reports = 0;
+        if (submittedPost.isNSFW === null || submittedPost.isNSFW === undefined) {
+            post.isNSFW = false;
+        } else {
+            post.isNSFW = true;
+        }
         post.url = submittedPost.url;
+        post.viewCount = 0;
+        post.isRemoved = false;
+        post.ContentType = {Name: 'link', Source: 'none'};
 
         console.log(submittedPost);
         console.log(post);
-
-        post.Author = this.user.displayName;
 
         this.addPost(post);
 

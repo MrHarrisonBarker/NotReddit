@@ -1,5 +1,5 @@
 <div [ngClass]="globals.isDark ? 'dark' : 'light'">
-    <div class="row no-gutters post-row" *ngIf="!(post.Content!=='text') || !(post.Content!=='textCrossPost')">
+    <div class="row no-gutters post-row" *ngIf="!(post.ContentType.Name!=='text') || !(post.ContentType.Name!=='textCrossPost')">
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <div class="v-align">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +51,7 @@
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters" *ngIf="!(post.Content!=='image') || !(post.Content!=='imageCrossPost')">
+    <div class="row post-row no-gutters" *ngIf="!(post.ContentType.Name!=='image') || !(post.ContentType.Name!=='imageCrossPost')">
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="8"
@@ -107,7 +107,7 @@
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters" *ngIf="!(post.Content!=='link') || !(post.Content!=='linkCrossPost')">
+    <div class="row post-row no-gutters" *ngIf="!(post.ContentType.Name!=='link') || !(post.ContentType.Name!=='linkCrossPost')">
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="8"

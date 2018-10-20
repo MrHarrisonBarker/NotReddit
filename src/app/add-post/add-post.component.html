@@ -18,22 +18,28 @@
 
         <div class="row">
             <div class="col-12">
-                <form [formGroup]="addPostForm" (ngSubmit)="submitPostForm()" class="form-group" *ngIf="!(formState!='post')">
+
+                <!-- <==========================================================================================> -->
+
+                <form [formGroup]="addPostForm" (ngSubmit)="submitPostForm()" class="form-group"
+                      *ngIf="!(formState!='post')">
                     <div class="form-group">
                         <input
                                 id="postTitle"
                                 formControlName="postTitle"
                                 placeholder="Title"
-                                class="form-control"
-                        />
+                                class="form-control">
+                        <div class="sub-text">
+                            Min-length: 5 // Max-length: 140
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <textarea
-                            formControlName="postBody"
-                            placeholder="Body"
-                            class="form-control"
-                            rows="10">
+                                formControlName="postBody"
+                                placeholder="Body"
+                                class="form-control"
+                                rows="10">
                         </textarea>
                     </div>
 
@@ -42,20 +48,31 @@
                                 formControlName="Visible"
                                 class="form-check-input"
                                 type="checkbox"
-                                required
                                 checked>
                         <div class="p-0">
                             Visible?
                         </div>
                     </div>
 
+                    <div class="form-group form-check">
+
+                        <input
+                                formControlName="isNSFW"
+                                class="form-check-input"
+                                type="checkbox"
+                                checked>
+                        <div class="p-0">
+                            NSFW?
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                        <!--<input
-                                formControlName="Domain"
-                                placeholder="Domain"
-                                class="form-control"
-                                required
-                                type="text">-->
+                        <div class="tag">
+                            <tag-input [editable]='true' [maxItems]='5' theme='minimal' formControlName="Tags"></tag-input>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 10px;">
                         <select multiple class="form-control" formControlName="Domain">
                             <option *ngFor="let domain of domains" value="{{domain?.Name}}">
                                 /{{domain?.Name}}
@@ -63,21 +80,24 @@
                         </select>
                     </div>
 
+
+
                     <button class="btn" [disabled]="!addPostForm.valid">
                         Submit
                     </button>
 
                 </form>
 
-                <form [formGroup]="addImageForm" (ngSubmit)="submitImageForm()" class="form-group" *ngIf="!(formState!='image')">
+                <!-- <==========================================================================================> -->
+
+                <form [formGroup]="addImageForm" (ngSubmit)="submitImageForm()" class="form-group"
+                      *ngIf="!(formState!='image')">
                     <div class="form-group">
                         <input
                                 formControlName="postTitle"
                                 placeholder="Title"
                                 class="form-control"
-                                type="text"
-                                required
-                                #spy>
+                                type="text">
                     </div>
 
                     <div class="form-group form-check">
@@ -85,25 +105,42 @@
                                 formControlName="Visible"
                                 class="form-check-input"
                                 type="checkbox"
-                                required
                                 checked>
                         <div class="p-0">
                             Visible?
                         </div>
                     </div>
 
-                    <select multiple class="form-control" formControlName="Domain">
-                        <option *ngFor="let domain of domains" value="{{domain?.Name}}">
-                            /{{domain?.Name}}
-                        </option>
-                    </select>
+                    <div class="form-group form-check">
+
+                        <input
+                                formControlName="isNSFW"
+                                class="form-check-input"
+                                type="checkbox"
+                                checked>
+                        <div class="p-0">
+                            NSFW?
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <tag-input [editable]='true' [maxItems]='5' theme='bootstrap' formControlName="Tags"></tag-input>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 10px;">
+
+                        <select multiple class="form-control" formControlName="Domain">
+                            <option *ngFor="let domain of domains" value="{{domain?.Name}}">
+                                /{{domain?.Name}}
+                            </option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <input
                                 formControlName="url"
                                 placeholder="url"
                                 class="form-control"
-                                required
                                 type="text">
                     </div>
 
@@ -113,15 +150,16 @@
 
                 </form>
 
-                <form [formGroup]="addLinkForm" (ngSubmit)="submitLinkForm()" class="form-group" *ngIf="!(formState!='link')">
+                <!-- <==========================================================================================> -->
+
+                <form [formGroup]="addLinkForm" (ngSubmit)="submitLinkForm()" class="form-group"
+                      *ngIf="!(formState!='link')">
                     <div class="form-group">
                         <input
                                 formControlName="postTitle"
                                 placeholder="Title"
                                 class="form-control"
-                                type="text"
-                                required
-                                #spy>
+                                type="text">
                     </div>
 
                     <div class="form-group form-check">
@@ -129,33 +167,35 @@
                                 formControlName="Visible"
                                 class="form-check-input"
                                 type="checkbox"
-                                required
                                 checked>
                         <div class="p-0">
                             Visible?
                         </div>
                     </div>
 
-                    <select multiple class="form-control" formControlName="Domain">
-                        <option *ngFor="let domain of domains" value="{{domain?.Name}}">
-                            /{{domain?.Name}}
-                        </option>
-                    </select>
+                    <div class="form-group" style="margin-bottom: 10px;">
+                        <select multiple class="form-control" formControlName="Domain">
+                            <option *ngFor="let domain of domains" value="{{domain?.Name}}">
+                                /{{domain?.Name}}
+                            </option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <input
                                 formControlName="url"
                                 placeholder="url"
                                 class="form-control"
-                                required
                                 type="text">
                     </div>
 
-                    <button class="btn" [hidden]="!addLinkForm.valid">
+                    <button class="btn" [disabled]="!addLinkForm.valid">
                         Submit
                     </button>
 
                 </form>
+
+                <!-- <==========================================================================================> -->
 
                 <div class="p-0" style="color: green;" *ngIf="!(formState!=='success')">
                     Success
