@@ -41,7 +41,7 @@
                 -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
-                <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
                 <a ngxClipboard [cbContent]="link" class="p-0"><span class="badge badge-pill">share</span> </a>
                 <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
             </div>
@@ -96,7 +96,7 @@
             </div>
             <img src="../../assets/picture.svg" width="20px" (click)="prevImage()" style="margin-right: 5px">
             <div class="btn-block d-inline">
-                <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
                 <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
                 <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
             </div>
@@ -151,7 +151,7 @@
                 -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
-                <a href="#" class="p-0"><span class="badge badge-pill">comments</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
                 <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
                 <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
             </div>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit } from '@angular/core';
 import {PostService} from '../post.service';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
@@ -25,20 +25,26 @@ export class PostDetailComponent implements OnInit {
     domain: Domain;
     voteStatus: String;
     hasVoteChanged: Boolean;
+    params;
+    add: Boolean;
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            console.log(params['_id']);
-            this.getPost(params['_id']);
-            this.getDomain(this.selectedPost.Domain);
-            console.log(this.domain.Icon);
-        });
+        this.add = false;
+        this.route.params.subscribe(params => this.params = params );
+        this.getPost(this.params['_id']);
+        console.log('hello ');
+        // this.getDomain(this.selectedPost.Domain);
+        // console.log('bye bye');
+        // console.log(this.domain);
     }
 
     getPost(id) {
         console.log(id);
         this.postService.getPost(id)
-            .subscribe(data => this.selectedPost = data,
+            .subscribe(data => {
+                console.log(data);
+                this.selectedPost = data;
+                },
                 error => console.log(error));
     }
 
@@ -62,10 +68,12 @@ export class PostDetailComponent implements OnInit {
     }
 
     getDomain(domainName) {
+        console.log(domainName);
         this.domainService.getDomain(domainName).subscribe((domain) => {
-            console.log(domainName);
             console.log(domain);
             this.domain = domain;
+        }, error => {
+            console.log(error);
         });
     }
 
@@ -94,5 +102,9 @@ export class PostDetailComponent implements OnInit {
         }
         this.postService.updatePost(post);
         console.log(post);
+    }
+
+    addComment() {
+        this.add = this.add ? false : true;
     }
 }

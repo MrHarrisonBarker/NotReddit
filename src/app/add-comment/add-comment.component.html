@@ -1,0 +1,17 @@
+<form [formGroup]="addCommentForm" (ngSubmit)="submitComment()" class="form-group">
+  <div class="form-group">
+    <input
+          id="Body"
+          formControlName="Body"
+          placeholder="Comment"
+          class="form-control">
+
+      <div class="sub-text">
+          Max-length: 400
+      </div>
+  </div>
+
+  <button class="btn" [disabled]="!addCommentForm.valid">
+    Submit
+  </button>
+</form>

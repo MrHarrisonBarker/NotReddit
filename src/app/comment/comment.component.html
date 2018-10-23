@@ -1,0 +1,11 @@
+<button (click)="addComment()" class="btn">
+  new comment
+</button>
+
+<div *ngIf="add">
+  <app-add-comment></app-add-comment>
+</div>
+
+<div class="p-0">
+  {{comment |  json}}
+</div>

@@ -1,3 +1,5 @@
+import {Comment} from './comment';
+
 export class Post {
     _id: String;
     postTitle: String;
@@ -16,14 +18,7 @@ export class Post {
     isNSFW: boolean;
     viewCount: number;
     isRemoved: boolean;
-    Comments: [{
-        id: String;
-        Body: String;
-        createdOn: Date;
-        Author: {
-            DisplayName: String;
-        };
-    }];
+    Comments: Comment[];
     ContentType: {
         Name: String;
         Source: String;
