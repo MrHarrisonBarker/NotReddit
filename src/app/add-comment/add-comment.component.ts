@@ -16,6 +16,7 @@ export class AddCommentComponent implements OnInit {
   addCommentForm: FormGroup;
   user;
   params;
+  post: Post;
 
   constructor(private formBuilder: FormBuilder,
               private postService: PostService,
@@ -29,24 +30,31 @@ export class AddCommentComponent implements OnInit {
   ngOnInit() {
     this.authService.user.subscribe(user => this.user = user);
     this.route.params.subscribe(params => this.params = params );
+    this.getPost(this.params['_id']);
   }
 
   submitComment() {
     const comment = new Comment();
-    const post = this.getPost(this.params['_id']);
     const submittedComment = this.addCommentForm.value;
 
     console.log(submittedComment);
+    console.log('POST');
+    console.log(this.post);
 
     comment.Body = submittedComment.Body;
     comment.Author = this.user.DisplayName;
     console.log('hello hello');
-    post.Comments = post.Comments.push(comment);
+    try {
+        this.post.Comments.push(comment);
+    } catch (e) {
+        console.log(e);
+    }
+
     console.log('bye bye');
-    this.updatePost(post);
+    this.updatePost(this.post);
 
     console.log(comment);
-    console.log(post);
+    console.log(this.post);
 
   }
 
@@ -54,12 +62,11 @@ export class AddCommentComponent implements OnInit {
     this.postService.updatePost(post);
   }
 
-  getPost(id): Post {
+  getPost(id) {
     this.postService.getPost(id).subscribe(post => {
       console.log(post);
-      return post;
+      this.post = post;
     });
-    return null;
   }
 
 }
