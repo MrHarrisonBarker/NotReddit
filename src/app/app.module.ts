@@ -29,6 +29,7 @@ import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommentComponent } from './comment/comment.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
+import {RouterModule} from '@angular/router';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -52,6 +53,7 @@ class SentryErrorHandler implements ErrorHandler {
         BrowserModule,
         TagInputModule,
         AppRoutingModule,
+        RouterModule,
         HttpClientModule,
         AngularFireModule.initializeApp(environment.firebase, 'angular-auth-firebase'),
         AngularFireAuthModule,
