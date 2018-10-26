@@ -4,7 +4,6 @@
         <app-nav></app-nav>
     </div>
 
-    {{selectedPost.Domain}}
     <button class="btn" (click)="getDomain(selectedPost.Domain)">
         click
     </button>
@@ -89,11 +88,11 @@
     </button>
 
     <div *ngIf="add">
-        <app-add-comment></app-add-comment>
+        <app-add-comment [comment]="selectedPost.Comments"></app-add-comment>
     </div>
 
     <div [ngClass]="globals.isFluid ? 'container-fluid' : 'container'" *ngIf="selectedPost.Comments">
-        <app-comment *ngFor="let comment of selectedPost.Comments" [comment]="comment"></app-comment>
+        <app-comment *ngFor="let comment of selectedPost.Comments" [comment]="comment" [post]="selectedPost"></app-comment>
     </div>
 </div>
 </div>

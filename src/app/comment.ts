@@ -5,5 +5,6 @@ export class Comment {
     Author: {
         DisplayName: String;
     };
-    Comment: Comment[];
+    Rank: number;
+    Comments: Comment[];
 }

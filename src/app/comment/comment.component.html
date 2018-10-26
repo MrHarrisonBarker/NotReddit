@@ -1,11 +1,36 @@
-<button (click)="addComment()" class="btn">
-  new comment
-</button>
+<div class="col">
+    <div class="p-0" style="color: deeppink;">
+        () -> {{comment.Body}}
+    </div>
 
-<div *ngIf="add">
-  <app-add-comment></app-add-comment>
+    <div class="p-0" style="color: navy;">
+        Posted by -> {{comment.Author}}
+    </div>
+
+    <div class="p-0 rank">
+        {{comment.Rank}}
+    </div>
+
+    <button (click)="addComment()" class="btn btn-dark">
+        new comment
+    </button>
+
+    <div *ngIf="add">
+        <app-add-comment [comment]="comment"></app-add-comment>
+    </div>
+
+    <!--
+    <div class="p-0" style="color: red;">
+      {{comment.Comments | json}}
+    </div>-->
+
+    <button (click)="deleteComment()" class="btn btn-dark">
+        Delete
+    </button>
 </div>
 
-<div class="p-0">
-  {{comment |  json}}
+<div class="col">
+    <app-comment *ngFor="let subComment of comment.Comments" [comment]="subComment" [post]="post"></app-comment>
 </div>
+
+<hr>

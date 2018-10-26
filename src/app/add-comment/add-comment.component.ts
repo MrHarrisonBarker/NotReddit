@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Comment} from '../comment';
 import {PostService} from '../post.service';
 import {Post} from '../post';
@@ -7,66 +7,93 @@ import {AuthService} from '../auth.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-add-comment',
-  templateUrl: './add-comment.component.html',
-  styleUrls: ['./add-comment.component.scss']
+    selector: 'app-add-comment',
+    templateUrl: './add-comment.component.html',
+    styleUrls: ['./add-comment.component.scss']
 })
 export class AddCommentComponent implements OnInit {
 
-  addCommentForm: FormGroup;
-  user;
-  params;
-  post: Post;
+    @Input() comment: Comment;
 
-  constructor(private formBuilder: FormBuilder,
-              private postService: PostService,
-              private authService: AuthService,
-              private route: ActivatedRoute) {
-    this.addCommentForm = formBuilder.group({
-       'Body': ['', Validators.required]
-    });
-  }
+    addCommentForm: FormGroup;
+    post: Post;
+    user;
+    params;
 
-  ngOnInit() {
-    this.authService.user.subscribe(user => this.user = user);
-    this.route.params.subscribe(params => this.params = params );
-    this.getPost(this.params['_id']);
-  }
-
-  submitComment() {
-    const comment = new Comment();
-    const submittedComment = this.addCommentForm.value;
-
-    console.log(submittedComment);
-    console.log('POST');
-    console.log(this.post);
-
-    comment.Body = submittedComment.Body;
-    comment.Author = this.user.DisplayName;
-    console.log('hello hello');
-    try {
-        this.post.Comments.push(comment);
-    } catch (e) {
-        console.log(e);
+    constructor(private formBuilder: FormBuilder,
+                private postService: PostService,
+                private authService: AuthService,
+                private route: ActivatedRoute) {
+        this.addCommentForm = formBuilder.group({
+            'Body': ['', Validators.required]
+        });
     }
 
-    console.log('bye bye');
-    this.updatePost(this.post);
+    ngOnInit() {
+        this.authService.user.subscribe(user => this.user = user);
+        this.route.params.subscribe(params => this.params = params);
+        this.getPost(this.params['_id']);
+    }
 
-    console.log(comment);
-    console.log(this.post);
+    submitComment() {
+        const comment = new Comment();
+        const submittedComment = this.addCommentForm.value;
 
-  }
+        console.log(submittedComment);
+        console.log('POST');
+        console.log(this.post);
 
-  updatePost(post) {
-    this.postService.updatePost(post);
-  }
+        comment.Body = submittedComment.Body;
+        comment.Author = this.user.DisplayName;
+        comment.Rank = 0;
 
-  getPost(id) {
-    this.postService.getPost(id).subscribe(post => {
-      console.log(post);
-      this.post = post;
-    });
-  }
+        console.log('hello hello');
+        console.log(this.comment);
+
+        if (this.comment) {
+            const currentComment = this.post.Comments.find(value => value._id === this.comment._id);
+            console.log('currentComment: ');
+            console.log(currentComment);
+            currentComment.Comments.push(comment);
+            console.log('new comment pushed: ');
+            console.log(currentComment);
+        } else {
+            this.post.Comments.push(comment);
+        }
+
+
+        // if (this.comment) {
+        //     this.post.Comments.push(this.post.Comments.find(value => value._id === this.comment._id));
+        //     console.log(this.post);
+        // } else {
+        //     this.post.Comments.push(comment);
+        // }
+
+        // try {
+        //     // this.post.Comments.push(comment);
+        //     this.post.Comments.push(this.comment);
+        // } catch (e) {
+        //     console.log(e);
+        // }
+
+
+        console.log('bye bye');
+        console.log(comment);
+        console.log(this.post);
+
+        this.updatePost(this.post);
+
+    }
+
+    updatePost(post) {
+        this.postService.updatePost(post);
+    }
+
+    getPost(id) {
+        this.postService.getPost(id).subscribe(post => {
+            console.log(post);
+            this.post = post;
+        });
+    }
 
 }

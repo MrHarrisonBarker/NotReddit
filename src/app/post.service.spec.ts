@@ -1,15 +1,28 @@
-import { TestBed, inject } from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 
-import { PostService } from './post.service';
+import {PostService} from './post.service';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('PostService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [PostService]
-    });
-  });
 
-  it('should be created', inject([PostService], (service: PostService) => {
-    expect(service).toBeTruthy();
-  }));
+    let service: PostService;
+    let httpMock: HttpTestingController;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [HttpClientTestingModule],
+            providers: [PostService]
+        });
+
+        service = TestBed.get(PostService);
+        httpMock = TestBed.get(HttpTestingController);
+    });
+
+    it('should be created', inject([PostService], () => {
+        expect(service).toBeTruthy();
+    }));
+
+    it('#getAllPosts should return value from observable', () => {
+
+    });
 });

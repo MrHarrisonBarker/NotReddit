@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Comment} from '../comment';
+import {PostService} from '../post.service';
+import {Post} from '../post';
 
 @Component({
   selector: 'app-comment',
@@ -9,9 +11,10 @@ import {Comment} from '../comment';
 export class CommentComponent implements OnInit {
 
   @Input() comment: Comment;
+  @Input() post: Post;
   add: boolean;
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
     this.add = false;
@@ -19,6 +22,14 @@ export class CommentComponent implements OnInit {
 
   addComment() {
       this.add = this.add ? false : true;
+  }
+
+  deleteComment() {
+    console.log('post --->');
+    console.log(this.post);
+    console.log('comment --->');
+    console.log(this.comment);
+    // this.postService.updatePost();
   }
 
 }
