@@ -1,11 +1,9 @@
-import {Component, Input, OnInit, NgZone} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../post';
 import {PostService} from '../post.service';
 import {DomainService} from '../domain.service';
 import {Domain} from '../domain';
 import {GlobalsService} from '../globals.service';
-
-// TODO: Crosspost
 
 @Component({
     selector: 'app-post',
@@ -70,7 +68,7 @@ export class PostComponent implements OnInit {
     }
 
     prevImage() {
-        this.beingPreviewed = this.beingPreviewed ? false : true;
+        this.beingPreviewed = !this.beingPreviewed;
         console.log(this.beingPreviewed);
     }
 

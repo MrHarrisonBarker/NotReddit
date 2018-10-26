@@ -16,7 +16,7 @@ export class PostService {
   constructor(private client: HttpClient) {
   }
 
-  httpUrl = 'https://not-reddit-api.herokuapp.com/posts';
+  public httpUrl = 'https://not-reddit-api.herokuapp.com/posts';
   domainHttpUrl = 'https://not-reddit-api.herokuapp.com/d';
 
   getAllPosts(): Observable<Post[]> {
