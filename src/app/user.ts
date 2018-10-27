@@ -1,3 +1,5 @@
+import {Post} from './post';
+
 export class User {
     _id: String;
     DisplayName: String;
@@ -15,4 +17,5 @@ export class User {
         SubscribedFrom: String;
         isMod: boolean;
     }];
+    Posts: Post[];
 }
