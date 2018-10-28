@@ -1,4 +1,5 @@
 import {Post} from './post';
+import {Subscription} from './subscription';
 
 export class User {
     _id: String;
@@ -12,10 +13,6 @@ export class User {
     isDev: boolean;
     Icon: String;
     numPosts: number;
-    Subscriptions: [{
-        Name: String;
-        SubscribedFrom: String;
-        isMod: boolean;
-    }];
+    Subscriptions: [Subscription];
     Posts: Post[];
 }

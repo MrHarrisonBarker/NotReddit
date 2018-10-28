@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from './user';
 import {Observable} from 'rxjs';
+import {Post} from './post';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -23,4 +24,17 @@ export class UserService {
   getUserByName(name): Observable<User> {
     return this.client.get<User>(`${httpUrl}/${name}`, httpOptions);
   }
-}
+
+  updateUserByName(user: User) {
+          const url = `${httpUrl}/${user.DisplayName}`;
+          this.client.put<Post>(url, user, httpOptions)
+              .subscribe(
+                  res => {
+                      console.log(res);
+                  },
+                  err => {
+                      console.log( 'Error occured' + err );
+                  });
+      }
+  }
+

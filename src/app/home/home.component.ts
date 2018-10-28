@@ -18,26 +18,28 @@ export class HomeComponent implements OnInit {
 
     posts: Post[];
     user: User;
+    authUser;
 
     constructor(private postService: PostService,
                 public globals: GlobalsService,
                 public authService: AuthService,
-                private userServivce: UserService) {
+                private userService: UserService) {
     }
 
     ngOnInit() {
         // this.getAllPosts();
         // this.orderPosts('postTitle', true);
         this.authService.user.subscribe(data => {
-            console.log(data);
-
-            console.log('hello');
-            this.getUser(data.displayName);
-            console.log('byr');
+            this.userService.getUserByName(data.displayName).subscribe(user => {
+                this.user = user;
+                user.Subscriptions.forEach(sub => {
+                    this.postService.getPostByDomain(sub.Name).subscribe(post => {
+                        this.posts = post;
+                        console.log(post);
+                    });
+                });
+            });
         });
-        console.log('hello hello');
-        console.log(this.user);
-        console.log('bye bye');
     }
 
     getAllPosts() {
@@ -59,9 +61,18 @@ export class HomeComponent implements OnInit {
     }
 
     getUser(name) {
-        this.userServivce.getUserByName(name).subscribe(user => {
+        this.userService.getUserByName(name).subscribe(user => {
             console.log(user);
+            this.user = user;
         });
+    }
+
+    getPosts() {
+        console.log('Hello ello');
+        console.log(this.user.Subscriptions);
+        //this.user.Subscriptions.forEach(sub => {
+        //    console.log(sub);
+        //});
     }
 
     orderPosts(property, isAscending) {
