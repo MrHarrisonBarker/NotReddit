@@ -28,17 +28,17 @@
                 </a>
             </div>
             <div class="p-0 sum-text">
-                () -> {{ post.Summary }}
+                () > {{ post.Summary }}
             </div>
             <div class="p-0 sub-text">
                 <em>
-                    Uploaded to ->
+                    Uploaded to >
                     <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
                         {{ domain?.Name }}
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
+                > {{ post.createdOn | date }} Type > {{ post.ContentType.Name }} By > {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
                 <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
@@ -86,13 +86,13 @@
             </div>
             <div class="p-0 sub-text">
                 <em>
-                    Uploaded to ->
+                    Uploaded to >
                     <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
                         {{ domain?.Name }}
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
+                > {{ post.createdOn | date }} Type > {{ post.ContentType.Name }} By > {{ post.Author }}
             </div>
             <img src="../../assets/picture.svg" width="20px" (click)="prevImage()" style="margin-right: 5px">
             <div class="btn-block d-inline">
@@ -142,13 +142,13 @@
             </div>
             <div class="p-0 sub-text">
                 <em>
-                    Uploaded to ->
+                    Uploaded to >
                     <a routerLink="/d/{{post.Domain}}" [ngStyle]="{'color': domain?.Colour}">
                         {{ domain?.Name }}
                     </a>
                     <img src={{domain?.Icon}} width="20px" height="20px">
                 </em>
-                -> {{ post.createdOn | date }} Type -> {{ post.ContentType.Name }} By -> {{ post.Author }}
+                > {{ post.createdOn | date }} Type > {{ post.ContentType.Name }} By > {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
                 <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>

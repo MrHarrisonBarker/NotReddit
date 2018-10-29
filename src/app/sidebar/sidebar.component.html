@@ -1,11 +1,38 @@
 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" [ngClass]="globals.isDark ? 'dark' : 'light'">
-    <div class="card">
+    <div class="card bg-light mb-3" >
+        <div class="card-header">User</div>
+        <div class="card-body">
+            <div class="p-0">
+                {{user | json}}
+                <img src={{user?.Icon}} width="30px" class="img-fluid">
+                {{user?.DisplayName}}
+            </div>
+            <div class="p-0">
+                Currency > {{user?.Currency}}
+            </div>
+            <div class="p-0">
+                numPosts > {{user?.numPosts}}
+            </div>
+            <div class="p-0">
+                Score > {{user?.Score}}
+            </div>
+            <div class="p-0">
+                {{user?.isDev}}
+            </div>
+            <div class="p-0">
+                {{user?.url}}
+            </div>
+        </div>
+    </div>
+
+    <div class="card bg-light mb-3" *ngIf="!isHome">
+        <div class="card-header">Domain</div>
         <div class="card-body">
             <div class="p-0 h3">
                 {{domain?.Title}}
             </div>
             <div class="p-0">
-                Subscribers -> {{domain?.Subscribers}}
+                Subscribers > {{domain?.Subscribers}}
             </div>
             <a (click)="subscribeDomain()" class="p-0">
         <span class="badge badge-pill">
@@ -13,13 +40,13 @@
         </span>
             </a>
             <div class="p-0">
-                Topic -> {{domain?.Topic}}
+                Topic > {{domain?.Topic}}
             </div>
             <div class="p-0">
-                Content -> {{domain?.Content}}
+                Content > {{domain?.Content}}
             </div>
             <div class="p-0">
-                Description -> {{domain?.Description}}
+                Description > {{domain?.Description}}
             </div>
             <img src={{domain?.Icon}} style="width: 100px"/>
         </div>

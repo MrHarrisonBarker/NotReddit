@@ -5,6 +5,9 @@ import {PostService} from '../post.service';
 import {ActivatedRoute} from '@angular/router';
 import {DomainService} from '../domain.service';
 import {GlobalsService} from '../globals.service';
+import {AuthService} from '../auth.service';
+import {UserService} from '../user.service';
+import {User} from '../user';
 
 @Component({
     selector: 'app-domain',
@@ -16,14 +19,23 @@ export class DomainComponent implements OnInit {
 
     posts: Post[];
     domain: Domain;
+    user: User;
 
     constructor(private route: ActivatedRoute,
                 private domainService: DomainService,
                 private postService: PostService,
-                public globals: GlobalsService) {
+                public globals: GlobalsService,
+                public authService: AuthService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
+        this.authService.user.subscribe(data => {
+            this.userService.getUserByName(data.displayName).subscribe(user => {
+                this.user = user;
+            });
+        });
+
         this.route.params.subscribe(params => {
             const domainName = params['domain'];
 

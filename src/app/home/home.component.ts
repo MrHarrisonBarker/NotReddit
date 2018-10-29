@@ -3,9 +3,6 @@ import {PostService} from '../post.service';
 import {Post} from '../post';
 import {GlobalsService} from '../globals.service';
 import {AuthService} from '../auth.service';
-import {AngularFireAuth} from '@angular/fire/auth';
-import * as firebase from 'firebase';
-import {Observable} from 'rxjs';
 import {UserService} from '../user.service';
 import {User} from '../user';
 
@@ -18,7 +15,6 @@ export class HomeComponent implements OnInit {
 
     posts: Post[];
     user: User;
-    authUser;
 
     constructor(private postService: PostService,
                 public globals: GlobalsService,
@@ -27,14 +23,13 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.getAllPosts();
-        // this.orderPosts('postTitle', true);
         this.authService.user.subscribe(data => {
             this.userService.getUserByName(data.displayName).subscribe(user => {
                 this.user = user;
                 user.Subscriptions.forEach(sub => {
                     this.postService.getPostByDomain(sub.Name).subscribe(post => {
                         this.posts = post;
+                        this.orderPosts('postTitle', true);
                         console.log(post);
                     });
                 });
@@ -58,21 +53,6 @@ export class HomeComponent implements OnInit {
     changeMode() {
         this.globals.isDark = this.globals.isDark ? false : true;
         console.log(this.globals.isDark);
-    }
-
-    getUser(name) {
-        this.userService.getUserByName(name).subscribe(user => {
-            console.log(user);
-            this.user = user;
-        });
-    }
-
-    getPosts() {
-        console.log('Hello ello');
-        console.log(this.user.Subscriptions);
-        //this.user.Subscriptions.forEach(sub => {
-        //    console.log(sub);
-        //});
     }
 
     orderPosts(property, isAscending) {

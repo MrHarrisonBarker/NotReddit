@@ -9,11 +9,9 @@
         <div class="row">
             <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                 <app-post *ngFor="let post of posts" [post]="post"></app-post>
-                {{user?.DisplayName}}
-                {{user?.Subscriptions | json}}
             </div>
             <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
-                <app-sidebar></app-sidebar>
+                <app-sidebar [isHome]="true" [user]="user"></app-sidebar>
             </div>
         </div>
     </div>
