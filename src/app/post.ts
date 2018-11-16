@@ -1,4 +1,5 @@
 import {Comment} from './comment';
+import {Crosspost} from './crosspost';
 
 export class Post {
     _id: String;
@@ -23,9 +24,5 @@ export class Post {
         Name: String;
         Source: String;
     };
-    CrossPost: {
-        isCrossPost: Boolean;
-        user: String;
-        post: String;
-    };
+    CrossPost: Crosspost;
 }

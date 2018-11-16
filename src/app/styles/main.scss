@@ -11,9 +11,24 @@ $colour-light: rgb(252, 252, 252);
 .postTitle {
   font-size: large;
 }
-.badge:hover {
-  background-color: #00FF7F;
+.comments:hover {
+  background-color: #FF851B;
+}
+.crosspost:hover {
+  background-color: #B10DC9;
+  color: white;
+}
+.share:hover {
+  background-color: #7FDBFF;
 }
 .btn-block {
   font-size: small;
+}
+.rank:hover {
+  background-color: lightgray;
+  //border: solid black;
+  border-radius: 50px;
+}
+.order {
+  //float: right;
 }

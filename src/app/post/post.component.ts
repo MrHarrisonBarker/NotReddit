@@ -13,6 +13,8 @@ import {GlobalsService} from '../globals.service';
 export class PostComponent implements OnInit {
 
     @Input() post: Post;
+    @Input() index: number;
+
     domain: Domain;
     voteStatus: String;
     hasVoteChanged: Boolean;
@@ -30,6 +32,7 @@ export class PostComponent implements OnInit {
         console.log(this.post);
         this.getDomain(this.post.Domain);
         this.link = '/post/' + this.post._id;
+        console.log('index' + this.index);
     }
 
     updateRank(post: Post, up: boolean) {

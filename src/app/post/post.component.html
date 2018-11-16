@@ -1,5 +1,13 @@
 <div [ngClass]="globals.isDark ? 'dark' : 'light'">
-    <div class="row no-gutters post-row" *ngIf="!(post.ContentType.Name!=='text') || !(post.ContentType.Name!=='textCrossPost')">
+    <div class="row no-gutters post-row"
+         *ngIf="!(post.ContentType.Name!=='text') || !(post.ContentType.Name!=='textCrossPost')">
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+            <div class="index">
+                <div class="p-0">
+                    {{index}}
+                </div>
+            </div>
+        </div>
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
             <div class="v-align">
                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -26,6 +34,9 @@
                 <a class="postTitle" routerLink="/post/{{post._id}}">
                     {{ post.postTitle }}
                 </a>
+                <div *ngFor="let tag of post.Tags">
+                    <span class="badge badge-secondary">{{tag}}</span>
+                </div>
             </div>
             <div class="p-0 sum-text">
                 () > {{ post.Summary }}
@@ -51,31 +62,43 @@
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters" *ngIf="!(post.ContentType.Name!=='image') || !(post.ContentType.Name!=='imageCrossPost')">
+    <div class="row post-row no-gutters"
+         *ngIf="!(post.ContentType.Name!=='image') || !(post.ContentType.Name!=='imageCrossPost')">
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+            <div class="index">
+                <div class="p-0 v-align">
+                    {{index}}
+                </div>
+            </div>
+        </div>
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="8"
-                 height="8"
-                 viewBox="0 0 8 8"
-                 class="voteBtn voteBtn-Up"
-                 (click)="updateRank(post,true)">
-                <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
-            </svg>
-            <div class="rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</div>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="8"
-                 height="8"
-                 viewBox="0 0 8 8"
-                 class="voteBtn voteBtn-Down"
-                 (click)="updateRank(post,false)">
-                <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
-            </svg>
+            <div class="v-align">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="8"
+                     height="8"
+                     viewBox="0 0 8 8"
+                     class="voteBtn voteBtn-Up"
+                     (click)="updateRank(post,true)">
+                    <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
+                </svg>
+                <div class="rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="8"
+                     height="8"
+                     viewBox="0 0 8 8"
+                     class="voteBtn voteBtn-Down"
+                     (click)="updateRank(post,false)">
+                    <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
+                </svg>
+            </div>
         </div>
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="img-block mx-auto">
                 <img src="{{post.url}}" class="img-fluid post-img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Imgur_icon.svg/2000px-Imgur_icon.svg.png" class="img-fluid post-img" *ngIf="post.url.includes('imgur')">
-                <img src="https://thumbs.gfycat.com/RequiredAjarArachnid-mobile.jpg" class="img-fluid post-img" *ngIf="post.url.includes('gfycat')">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Imgur_icon.svg/2000px-Imgur_icon.svg.png"
+                     class="img-fluid post-img" *ngIf="post.url.includes('imgur')">
+                <img src="https://thumbs.gfycat.com/RequiredAjarArachnid-mobile.jpg" class="img-fluid post-img"
+                     *ngIf="post.url.includes('gfycat')">
             </div>
         </div>
         <div class="col">
@@ -83,6 +106,9 @@
                 <a class="postTitle" routerLink="/post/{{post._id}}">
                     {{ post.postTitle }}
                 </a>
+                <div *ngFor="let tag of post.Tags" class="d-inline">
+                    <span class="badge badge-secondary">{{tag}}</span>
+                </div>
             </div>
             <div class="p-0 sub-text">
                 <em>
@@ -96,36 +122,46 @@
             </div>
             <img src="../../assets/picture.svg" width="20px" (click)="prevImage()" style="margin-right: 5px">
             <div class="btn-block d-inline">
-                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
-                <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
-                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-light comments">comments</span></a>
+                <a class="p-0"><span class="badge badge-light share">share</span></a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-light crosspost">crosspost</span></a>
             </div>
             <app-crosspost [selectedPost]="selectedPost" *ngIf="selectedPost"></app-crosspost>
-            <img *ngIf="beingPreviewed" src={{post.url}} class="img-fluid" style="max-width: 100%"/>
+                    <img src={{post.url}} *ngIf="beingPreviewed" class="img-fluid" style="max-width: 100%"/>
         </div>
     </div>
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters" *ngIf="!(post.ContentType.Name!=='link') || !(post.ContentType.Name!=='linkCrossPost')">
+    <div class="row post-row no-gutters"
+         *ngIf="!(post.ContentType.Name!=='link') || !(post.ContentType.Name!=='linkCrossPost')">
+        <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
+            <div class="index">
+                <div class="p-0">
+                    {{index}}
+                </div>
+            </div>
+        </div>
         <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 rank-block">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="8"
-                 height="8"
-                 viewBox="0 0 8 8"
-                 class="voteBtn voteBtn-Up"
-                 (click)="updateRank(post,true)">
-                <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
-            </svg>
-            <div class="rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</div>
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="8"
-                 height="8"
-                 viewBox="0 0 8 8"
-                 class="voteBtn voteBtn-Down"
-                 (click)="updateRank(post,false)">
-                <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
-            </svg>
+            <div class="v-align">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="8"
+                     height="8"
+                     viewBox="0 0 8 8"
+                     class="voteBtn voteBtn-Up"
+                     (click)="updateRank(post,true)">
+                    <path d="M4 0l-4 4h8l-4-4z" transform="translate(0 2)"/>
+                </svg>
+                <div class="rank" [ngStyle]="{'color': voteStatus} ">{{ post.Rank }}</div>
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="8"
+                     height="8"
+                     viewBox="0 0 8 8"
+                     class="voteBtn voteBtn-Down"
+                     (click)="updateRank(post,false)">
+                    <path d="M0 0l4 4 4-4h-8z" transform="translate(0 2)"/>
+                </svg>
+            </div>
         </div>
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="img-block mx-auto">

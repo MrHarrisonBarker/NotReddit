@@ -4,6 +4,7 @@ import {GlobalsService} from '../globals.service';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../post.service';
 import {AuthService} from '../auth.service';
+import {post} from 'selenium-webdriver/http';
 
 @Component({
     selector: 'app-crosspost',
@@ -64,10 +65,11 @@ export class CrosspostComponent implements OnInit {
         post.Author = this.user.displayName;
         post.Visible = submittedPost.Visible;
 
-        post.CrossPost.isCrossPost = true;
-        post.CrossPost.post = this.selectedPost._id;
-        console.log('hello');
-        post.CrossPost.user = 'Harrison2';
+        post.CrossPost = {
+          isCrossPost: true,
+          post: this.selectedPost._id,
+          user: this.user
+        };
 
         this.addPost(post);
 

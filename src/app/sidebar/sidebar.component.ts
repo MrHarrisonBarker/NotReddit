@@ -3,8 +3,7 @@ import {Domain} from '../domain';
 import {GlobalsService} from '../globals.service';
 import {UserService} from '../user.service';
 import {User} from '../user';
-import {AuthService} from '../auth.service';
-import {InitialPipe} from 'ngx-pipes';
+import {Subscription} from '../subscription';
 
 @Component({
     selector: 'app-sidebar',
@@ -25,11 +24,13 @@ export class SidebarComponent implements OnInit {
     }
 
     subscribeDomain() {
-        this.user.Subscriptions.push({
-            Name: this.domain.Name,
-            SubscribedFrom: new Date(),
-            isMod: true
-        });
+        const sub = new Subscription();
+
+        sub.Name = this.domain.Name;
+        sub.SubscribedFrom = new Date();
+        sub.isMod = true;
+
+        this.user.Subscriptions.push(sub);
         console.log(this.user);
         this.userService.updateUserByName(this.user);
     }

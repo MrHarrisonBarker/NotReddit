@@ -148,10 +148,12 @@ export class AddPostComponent implements OnInit {
             post.Visible = true;
         }
         post.Domain = submittedPost.Domain;
-        submittedPost.Tags.forEach(tag => {
-            console.log(tag.value);
-            Tags.push(tag.value);
-        });
+        if (!(submittedPost.Tags === undefined || submittedPost.Tags.length == 0)) {
+            submittedPost.Tags.forEach(tag => {
+                console.log(tag.value);
+                Tags.push(tag.value);
+            });
+        }
         post.Tags = Tags;
         post.Reports = 0;
         if (submittedPost.isNSFW === null || submittedPost.isNSFW === undefined) {
@@ -191,10 +193,12 @@ export class AddPostComponent implements OnInit {
             post.Visible = true;
         }
         post.Domain = submittedPost.Domain;
-        submittedPost.Tags.forEach(tag => {
-            console.log(tag.value);
-            Tags.push(tag.value);
-        });
+        if (!(submittedPost.Tags === undefined || submittedPost.Tags.length == 0)) {
+            submittedPost.Tags.forEach(tag => {
+                console.log(tag.value);
+                Tags.push(tag.value);
+            });
+        }
         post.Tags = Tags;
         post.Reports = 0;
         if (submittedPost.isNSFW === null || submittedPost.isNSFW === undefined) {

@@ -30,6 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { CommentComponent } from './comment/comment.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import {RouterModule} from '@angular/router';
+import { SortPipe } from './sort.pipe';
 
 Sentry.init({
     dsn: 'https://659bc1284650420a9eb01385b478bd16@sentry.io/1289869'
@@ -48,7 +49,7 @@ class SentryErrorHandler implements ErrorHandler {
 
 
 @NgModule({
-    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent, NavComponent, CommentComponent, AddCommentComponent],
+    declarations: [AppComponent, PostComponent, LoginComponent, UsersComponent, HomeComponent, AddPostComponent, UpdatePostComponent, DomainComponent, PostDetailComponent, DomainListComponent, StartComponent, SidebarComponent, CrosspostComponent, NavComponent, CommentComponent, AddCommentComponent, SortPipe],
     imports: [
         BrowserModule,
         TagInputModule,

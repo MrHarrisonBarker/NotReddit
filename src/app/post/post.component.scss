@@ -45,3 +45,7 @@ $colour-light: rgb(252, 252, 252);
 .v-align {
   @include vertical-align();
 }
+.index {
+  background-color: rgb(245, 245, 245);
+  height: 100%;
+}
