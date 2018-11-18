@@ -1,7 +1,7 @@
     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12" [ngClass]="globals.isDark ? 'dark' : 'light'">
     <div class="card mb-3" [ngClass]="globals.isDark ? 'text-white card-my-dark' : 'card-my-light'">
-        <div class="card-header">User</div>
         <div class="card-body">
+            <div class="card-title">User</div>
             <div class="p-0">
                 <!--{{user | json}}-->
                 <img src={{user?.Icon}} width="30px" class="img-fluid">
@@ -26,8 +26,8 @@
     </div>
 
     <div class="card mb-3" *ngIf="!isHome" [ngClass]="globals.isDark ? 'text-white card-my-dark' : 'card-my-light'">
-        <div class="card-header">Domain</div>
         <div class="card-body">
+            <div class="card-title">Domain</div>
             <div class="p-0 h3">
                 {{domain?.Title}}
             </div>

@@ -33,9 +33,9 @@ $colour-light: rgb(252, 252, 252);
 .dark .voteBtn-Down:Hover {
   fill: #FF0000;
 }
-.post-row {
-  margin-bottom: 10px;
-  // border: solid green;
+.dark .post-row {
+  border: 1px solid $colour-light;
+  padding: 5px 0 5px 0;
 }
 .dark .post-row:hover {
   background-color: rgb(41, 41, 41);

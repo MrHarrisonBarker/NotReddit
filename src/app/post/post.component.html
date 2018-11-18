@@ -1,9 +1,10 @@
 <div [ngClass]="globals.isDark ? 'dark' : 'light'">
-    <div class="row no-gutters post-row"
-         *ngIf="!(post.ContentType.Name!=='text') || !(post.ContentType.Name!=='textCrossPost')">
+    <div class="row post-row mb-0"
+         *ngIf="!(post.ContentType.Name!=='text') || !(post.ContentType.Name!=='textCrossPost')"
+         [ngClass]="index == 0 ? '' : 'border-top-0'">
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="index">
-                <div class="p-0">
+                <div class="p-0 v-align">
                     {{index}}
                 </div>
             </div>
@@ -29,12 +30,12 @@
                 </svg>
             </div>
         </div>
-        <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 post">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 post">
             <div class="p-0">
                 <a class="postTitle" routerLink="/post/{{post._id}}">
                     {{ post.postTitle }}
                 </a>
-                <div *ngFor="let tag of post.Tags">
+                <div *ngFor="let tag of post.Tags" class="d-inline">
                     <span class="badge badge-secondary">{{tag}}</span>
                 </div>
             </div>
@@ -52,9 +53,9 @@
                 > {{ post.createdOn | date }} Type > {{ post.ContentType.Name }} By > {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
-                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
-                <a ngxClipboard [cbContent]="link" class="p-0"><span class="badge badge-pill">share</span> </a>
-                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-light comments">comments</span></a>
+                <a class="p-0"><span class="badge badge-light share">share</span></a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-light crosspost">crosspost</span></a>
             </div>
             <app-crosspost [selectedPost]="post" *ngIf="selectedPost"></app-crosspost>
         </div>
@@ -62,8 +63,9 @@
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters"
-         *ngIf="!(post.ContentType.Name!=='image') || !(post.ContentType.Name!=='imageCrossPost')">
+    <div class="row post-row mb-0"
+         *ngIf="!(post.ContentType.Name!=='image') || !(post.ContentType.Name!=='imageCrossPost')"
+         [ngClass]="index == 0 ? '' : 'border-top-0'">
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="index">
                 <div class="p-0 v-align">
@@ -133,11 +135,12 @@
 
     <!-- ############################################################################# -->
 
-    <div class="row post-row no-gutters"
-         *ngIf="!(post.ContentType.Name!=='link') || !(post.ContentType.Name!=='linkCrossPost')">
+    <div class="row post-row mb-0"
+         *ngIf="!(post.ContentType.Name!=='link') || !(post.ContentType.Name!=='linkCrossPost')"
+         [ngClass]="index == 0 ? '' : 'border-top-0'">
         <div class="col-auto col-sm-auto col-md-auto col-lg-auto col-xl-auto">
             <div class="index">
-                <div class="p-0">
+                <div class="p-0 v-align">
                     {{index}}
                 </div>
             </div>
@@ -175,6 +178,9 @@
                 <a class="postTitle" routerLink="/post/{{post._id}}">
                     {{ post.postTitle }}
                 </a>
+                <div *ngFor="let tag of post.Tags" class="d-inline">
+                    <span class="badge badge-secondary">{{tag}}</span>
+                </div>
             </div>
             <div class="p-0 sub-text">
                 <em>
@@ -187,9 +193,9 @@
                 > {{ post.createdOn | date }} Type > {{ post.ContentType.Name }} By > {{ post.Author }}
             </div>
             <div class="btn-block d-inline">
-                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-pill">comments</span> </a>
-                <a href="#" class="p-0"><span class="badge badge-pill">share</span> </a>
-                <a (click)="crossPost()" class="p-0"><span class="badge badge-pill">crosspost</span> </a>
+                <a routerLink="/post/{{post._id}}" class="p-0"><span class="badge badge-light comments">comments</span></a>
+                <a class="p-0"><span class="badge badge-light share">share</span></a>
+                <a (click)="crossPost()" class="p-0"><span class="badge badge-light crosspost">crosspost</span></a>
             </div>
             <app-crosspost [selectedPost]="selectedPost" *ngIf="selectedPost"></app-crosspost>
         </div>
